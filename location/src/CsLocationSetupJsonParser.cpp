@@ -2,7 +2,7 @@
 #include "CsLocationSetupJsonParser.hpp"
 
 namespace crisprsearch::location {
-    CsLocationSetupJsonParser::CsLocationSetupJsonParser(string path) {
+    CsLocationSetupJsonParser::CsLocationSetupJsonParser(string json) {
 
     }
 

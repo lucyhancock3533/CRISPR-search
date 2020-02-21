@@ -23,9 +23,9 @@ namespace crisprsearch::location {
     public:
         /**
          * Create new SetupJson object
-         * @param path Full UNIX path to setup json
+         * @param json Full JSON setup string
          */
-        explicit CsLocationSetupJsonParser(string path);
+        explicit CsLocationSetupJsonParser(string json);
         /**
          * Parse the JSON within the file specified in the constructor and load into class
          */

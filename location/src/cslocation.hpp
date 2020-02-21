@@ -28,6 +28,6 @@ using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
 using boost::iostreams::gzip_decompressor;
 
-string CRISPR_CAS_FINDER_PATH;
+extern string CRISPR_CAS_FINDER_PATH;
 
 #endif
