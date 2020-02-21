@@ -3,6 +3,12 @@
 
 #include "cslocation.hpp"
 
+struct FileNotGoodException : public exception {
+    const char * what () const throw () {
+        return "Could not load file";
+    }
+};
+
 namespace crisprsearch::location {
     /**
      * Genome decompression class. Un GZips .fa.gz files and produces a byte array of the .fa file content
