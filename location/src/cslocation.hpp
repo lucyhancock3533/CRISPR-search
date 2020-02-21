@@ -6,6 +6,6 @@
 #include <utility>
 
 using std::string;
-using std::shared_ptr;
+using std::unique_ptr;
 
 #endif

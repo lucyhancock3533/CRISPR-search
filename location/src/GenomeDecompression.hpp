@@ -20,7 +20,7 @@ namespace crisprsearch::location {
          * Decompress specified .fa.gz file
          * @return Byte array containing raw .fa file content
          */
-        shared_ptr<char> decompress();
+        unique_ptr<char[]> decompress();
     };
 }
 

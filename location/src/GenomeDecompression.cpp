@@ -6,7 +6,7 @@ namespace crisprsearch::location {
         genomePath = std::move(path);
     }
 
-    shared_ptr<char> GenomeDecompression::decompress() {
+    unique_ptr<char[]> GenomeDecompression::decompress() {
         return nullptr;
     }
 }
