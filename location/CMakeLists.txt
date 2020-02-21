@@ -20,10 +20,10 @@ include_directories(${GTEST_INCLUDE_DIRS})
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     include_directories(src/)
-    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp)
+    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp)
     target_link_libraries(cslocation z ${Boost_LIBRARIES})
 
-    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp)
+    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp)
     target_link_libraries(cslocation-test z ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
 	
 	install(TARGETS cslocation DESTINATION bin)
