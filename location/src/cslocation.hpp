@@ -9,6 +9,7 @@
 #include <fstream>
 #include <exception>
 #include <sstream>
+#include <vector>
 
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -21,10 +22,10 @@ using std::ios_base;
 using std::stringstream;
 using std::make_unique;
 using std::exception;
+using std::vector;
 
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
 using boost::iostreams::gzip_decompressor;
-
 
 #endif
