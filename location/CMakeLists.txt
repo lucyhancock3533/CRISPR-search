@@ -18,4 +18,7 @@ if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
     add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp)
     target_link_libraries(cslocation ${Boost_LIBRARIES})
+
+    add_executable(cslocation-test test_src/test_main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp)
+    target_link_libraries(cslocation-test ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
 endif()
