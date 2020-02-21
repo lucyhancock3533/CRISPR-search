@@ -3,6 +3,7 @@
 
 #include <string>
 #include <memory>
+#include <utility>
 
 using std::string;
 using std::shared_ptr;
