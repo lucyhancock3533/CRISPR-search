@@ -21,12 +21,14 @@ namespace crisprsearch::location {
     };
 
     /**
-     * Class to parse input JSON for setip
+     * Class to parse input JSON for setup
      */
     class CsLocationSetupJsonParser {
     private:
+        string jsonString;
         vector<CsLocationFile> files;
         string crisprDbpath;
+        void parseGenomesArray(shared_ptr<rapidjson::Document>);
     public:
         /**
          * Create new SetupJson object
