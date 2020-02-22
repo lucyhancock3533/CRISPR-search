@@ -4,6 +4,12 @@
 #include "cslocation.hpp"
 
 namespace crisprsearch::location {
+    struct InvalidJSONException : public exception {
+        const char * what () const throw () {
+            return "Setup JSON was invalid or missing required parameters.";
+        }
+    };
+
     /**
      * Structure to store genome file information
      */
@@ -20,6 +26,7 @@ namespace crisprsearch::location {
     class CsLocationSetupJsonParser {
     private:
         vector<CsLocationFile> files;
+        string crisprDbpath;
     public:
         /**
          * Create new SetupJson object
@@ -35,6 +42,11 @@ namespace crisprsearch::location {
          * @return Vector of CsLocationFile structs containing input genome information
          */
         vector<CsLocationFile> getFiles();
+        /**
+         * Get a string containing the path to the CRISPR SQLite DB
+         * @return Full UNIX path to CRISPR db file
+         */
+        string getCrisprDbPath();
     };
 }
 
