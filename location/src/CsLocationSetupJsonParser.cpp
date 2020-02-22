@@ -13,4 +13,8 @@ namespace crisprsearch::location {
     vector<CsLocationFile> CsLocationSetupJsonParser::getFiles() {
         return vector<CsLocationFile>();
     }
+
+    string CsLocationSetupJsonParser::getCrisprDbPath() {
+        return "";
+    }
 }
