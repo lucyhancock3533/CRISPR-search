@@ -17,6 +17,8 @@
 
 #include "rapidjson/document.h"
 
+#include <sqlite3.h>
+
 using std::string;
 using std::unique_ptr;
 using std::shared_ptr;
