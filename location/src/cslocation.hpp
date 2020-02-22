@@ -27,6 +27,8 @@ using std::make_unique;
 using std::make_shared;
 using std::exception;
 using std::vector;
+using std::cout;
+using std::endl;
 
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
