@@ -15,12 +15,16 @@
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/copy.hpp>
 
+#include "rapidjson/document.h"
+
 using std::string;
 using std::unique_ptr;
+using std::shared_ptr;
 using std::ifstream;
 using std::ios_base;
 using std::stringstream;
 using std::make_unique;
+using std::make_shared;
 using std::exception;
 using std::vector;
 
