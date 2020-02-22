@@ -3,7 +3,7 @@
 #include "cslocation.hpp"
 #include "GenomeDecompression.hpp"
 
-using crisprsearch::location::GenomeDecompression;
+using namespace crisprsearch::location;
 
 /**
  * Tests a successful GZip decompression
