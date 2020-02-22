@@ -8,7 +8,7 @@ using crisprsearch::location::GenomeDecompression;
 /**
  * Tests a successful GZip decompression
  */
-TEST(locDecomp, locDecompSuccess) {
+TEST(locDecomp, testSuccess) {
     auto decomp = GenomeDecompression("test_data/locDecompSuccess.fa.gz");
     unique_ptr<char[]> result = decomp.decompress();
 
@@ -27,7 +27,7 @@ TEST(locDecomp, locDecompSuccess) {
 /**
  * Tests trying to ungzip a non-gzip file
  */
-TEST(locDecomp, locDecompInvalidFile) {
+TEST(locDecomp, testInvalidFile) {
     auto decomp = GenomeDecompression("test_data/locDecompInvalid.fa");
     ASSERT_ANY_THROW(decomp.decompress());
 }
@@ -35,7 +35,7 @@ TEST(locDecomp, locDecompInvalidFile) {
 /**
  * Tests trying to ungzip a non existant file
  */
-TEST(locDecomp, locDecompNoFile) {
+TEST(locDecomp, testFileDoesntExist) {
     auto decomp = GenomeDecompression("test_data/thisdoesntexist.fa.gz");
     ASSERT_THROW(decomp.decompress(), FileNotGoodException);
 }
