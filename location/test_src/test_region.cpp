@@ -1,17 +1,17 @@
-/// Record class tests
+/// Region class tests
 
 #include "gtest/gtest.h"
 #include "cslocation.hpp"
-#include "Record.hpp"
+#include "Region.hpp"
 
 using namespace crisprsearch::location;
 using boost::uuids::string_generator;
 
 /**
- * Test creating new Record from individual components
+ * Test creating new Region from individual components
  */
-TEST(locRecord, testRecordComponentCreate) {
-    Record r = Record("seqTest", "typeTest", 100, 399);
+TEST(locRegion, testRegionComponentCreate) {
+    Region r = Region("seqTest", "typeTest", 100, 399);
 
     ASSERT_EQ("seqTest", r.getSequence());
     ASSERT_EQ("typeTest", r.getType());
@@ -24,6 +24,6 @@ TEST(locRecord, testRecordComponentCreate) {
 }
 
 /**
- * Test creating new record from JSON
+ * Test creating new region from JSON
  */
  // TODO: With JSON parsing feature

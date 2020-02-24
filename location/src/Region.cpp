@@ -1,29 +1,29 @@
 #include "cslocation.hpp"
-#include "Record.hpp"
+#include "Region.hpp"
 
 namespace crisprsearch::location {
 
-    string Record::getId() {
+    string Region::getId() {
         return id;
     }
 
-    string Record::getSequence() {
+    string Region::getSequence() {
         return sequence;
     }
 
-    string Record::getType() {
+    string Region::getType() {
         return type;
     }
 
-    int Record::getStartPos() {
+    int Region::getStartPos() {
         return startPos;
     }
 
-    int Record::getEndPos() {
+    int Region::getEndPos() {
         return endPos;
     }
 
-    Record::Record(string sequence, string type, int startPos, int endPos) {
+    Region::Region(string sequence, string type, int startPos, int endPos) {
         this->sequence = std::move(sequence);
         this->type = std::move(type);
         this->startPos = startPos;
