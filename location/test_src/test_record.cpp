@@ -7,6 +7,9 @@
 using namespace crisprsearch::location;
 using boost::uuids::string_generator;
 
+/**
+ * Test creating new Record from individual components
+ */
 TEST(locRecord, testRecordComponentCreate) {
     Record r = Record("seqTest", "typeTest", 100, 399);
 
@@ -19,3 +22,8 @@ TEST(locRecord, testRecordComponentCreate) {
     ASSERT_NO_THROW(id = string_generator()(r.getId()));
     ASSERT_NE(uuid::version_unknown, id.version());
 }
+
+/**
+ * Test creating new record from JSON
+ */
+ // TODO: With JSON parsing feature
