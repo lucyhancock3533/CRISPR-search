@@ -12,7 +12,7 @@ namespace crisprsearch::location {
         ~LocationDb();
         //void writeGenomeRecord(Genome);
         //void writeCrisprRecord(Crispr);
-        //void writeRecordRecord(Record);
+        //void writeRegionRecord(Region);
     };
 }
 

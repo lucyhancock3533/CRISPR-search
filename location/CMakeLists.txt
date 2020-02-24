@@ -28,11 +28,11 @@ include_directories(${SQLite3_INCLUDE_DIRS})
 
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp src/LocationDb.cpp src/LocationDb.hpp src/Record.cpp src/Record.hpp)
+    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp src/Crispr.cpp src/Crispr.hpp)
     add_dependencies(cslocation rapidjson)
     target_link_libraries(cslocation z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES})
 
-    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp src/LocationDb.cpp src/LocationDb.hpp src/Record.cpp src/Record.hpp test_src/test_record.cpp)
+    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp test_src/test_region.cpp src/Crispr.cpp src/Crispr.hpp)
     add_dependencies(cslocation-test rapidjson)
     target_link_libraries(cslocation-test z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
 	
