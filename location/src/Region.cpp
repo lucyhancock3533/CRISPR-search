@@ -2,7 +2,6 @@
 #include "Region.hpp"
 
 namespace crisprsearch::location {
-
     string Region::getId() {
         return id;
     }
