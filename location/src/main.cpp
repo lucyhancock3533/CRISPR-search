@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
         return 1;
     }
     string fileData;
-    fileData.assign(std::istreambuf_iterator<char>(setupFile), std::istreambuf_iterator<char>());
+    fileData.assign(istreambuf_iterator<char>(setupFile), istreambuf_iterator<char>());
     setupFile.close();
 
     // Parse JSON File

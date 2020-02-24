@@ -23,8 +23,8 @@ namespace crisprsearch::location {
     }
 
     Region::Region(string sequence, string type, int startPos, int endPos) {
-        this->sequence = std::move(sequence);
-        this->type = std::move(type);
+        this->sequence = move(sequence);
+        this->type = move(type);
         this->startPos = startPos;
         this->endPos = endPos;
 
