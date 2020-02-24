@@ -1,6 +1,6 @@
+#include "cslocation.hpp"
 #include "Crispr.hpp"
-
-#include <utility>
+#include "Region.hpp"
 
 namespace crisprsearch::location {
     Crispr::Crispr(string sourceAssembly, int drLength, int spacers, int evidenceLevel) {
