@@ -24,10 +24,14 @@ namespace crisprsearch::location {
     }
 
     Record::Record(string sequence, string type, int startPos, int endPos) {
-        this->sequence = sequence;
-        this->type = type;
+        this->sequence = std::move(sequence);
+        this->type = std::move(type);
         this->startPos = startPos;
         this->endPos = endPos;
-        this->id = "IDNOTIMPLEMENTED";
+
+        // Generate random UUID and convert to string for ID
+        basic_random_generator<boost::mt19937> uuidGen;
+        uuid idRaw = uuidGen();
+        this->id = boost::uuids::to_string(idRaw);
     }
 }

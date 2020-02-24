@@ -17,6 +17,8 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/string_generator.hpp>
+#include <boost/uuid/random_generator.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 #include "rapidjson/document.h"
 
@@ -39,6 +41,7 @@ using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
 using boost::iostreams::gzip_decompressor;
 using boost::uuids::uuid;
+using boost::uuids::basic_random_generator;
 
 extern string CRISPR_CAS_FINDER_PATH;
 
