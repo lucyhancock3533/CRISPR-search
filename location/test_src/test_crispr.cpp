@@ -38,6 +38,7 @@ TEST(locCrispr, testCrisprRegionAdd) {
     c.addRegion(r2);
     c.addRegion(r3);
 
+    ASSERT_EQ(3, (*c.getRegions()).size());
     ASSERT_EQ(r1.getId(), (*c.getRegions())[0].getId());
     ASSERT_EQ(r2.getId(), (*c.getRegions())[1].getId());
     ASSERT_EQ(r3.getId(), (*c.getRegions())[2].getId());

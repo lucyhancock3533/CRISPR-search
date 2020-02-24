@@ -32,7 +32,7 @@ if(Boost_FOUND)
     add_dependencies(cslocation rapidjson)
     target_link_libraries(cslocation z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES})
 
-    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp test_src/test_region.cpp src/Crispr.cpp src/Crispr.hpp test_src/test_crispr.cpp src/Genome.cpp src/Genome.hpp)
+    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp test_src/test_region.cpp src/Crispr.cpp src/Crispr.hpp test_src/test_crispr.cpp src/Genome.cpp src/Genome.hpp test_src/test_genome.cpp)
     add_dependencies(cslocation-test rapidjson)
     target_link_libraries(cslocation-test z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
 	
