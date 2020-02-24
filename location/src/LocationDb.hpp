@@ -2,6 +2,9 @@
 #define CRISPR_SEARCH_LOCATION_LOCATIONDB_HPP
 
 #include "cslocation.hpp"
+#include "Genome.hpp"
+#include "Crispr.hpp"
+#include "Region.hpp"
 
 namespace crisprsearch::location {
     class LocationDb {
@@ -10,9 +13,9 @@ namespace crisprsearch::location {
     public:
         explicit LocationDb(string path);
         ~LocationDb();
-        //void writeGenomeRecord(Genome);
-        //void writeCrisprRecord(Crispr);
-        //void writeRegionRecord(Region);
+        void writeGenomeRecord(Genome genome);
+        void writeCrisprRecord(Crispr crispr);
+        void writeRegionRecord(Region region);
     };
 }
 

@@ -1,6 +1,6 @@
+#include "cslocation.hpp"
 #include "Genome.hpp"
-
-#include <utility>
+#include "Crispr.hpp"
 
 namespace crisprsearch::location {
 
