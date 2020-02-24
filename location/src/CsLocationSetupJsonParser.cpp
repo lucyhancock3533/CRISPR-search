@@ -7,7 +7,7 @@ using namespace rapidjson;
 
 namespace crisprsearch::location {
     CsLocationSetupJsonParser::CsLocationSetupJsonParser(string json) {
-        jsonString = std::move(json);
+        jsonString = move(json);
         files = vector<CsLocationFile>();
     }
 

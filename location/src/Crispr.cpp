@@ -1,8 +1,10 @@
 #include "Crispr.hpp"
 
+#include <utility>
+
 namespace crisprsearch::location {
     Crispr::Crispr(string sourceAssembly, int drLength, int spacers, int evidenceLevel) {
-        this->sourceAssembly = sourceAssembly;
+        this->sourceAssembly = move(sourceAssembly);
         this->drLength = drLength;
         this->spacers = spacers;
         this->evidenceLevel = evidenceLevel;
@@ -37,7 +39,7 @@ namespace crisprsearch::location {
     }
 
     void Crispr::addRegion(Region region) {
-        regions->push_back(std::move(region));
+        regions->push_back(move(region));
     }
 
     string Crispr::getSourceAssembly() {
