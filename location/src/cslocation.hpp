@@ -35,6 +35,8 @@ using std::exception;
 using std::vector;
 using std::cout;
 using std::endl;
+using std::istreambuf_iterator;
+using std::move;
 
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;

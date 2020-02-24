@@ -1,9 +1,20 @@
 #include "Genome.hpp"
 
+#include <utility>
+
 namespace crisprsearch::location {
 
     Genome::Genome(string name, string genomeSource, string genomeInfo) {
         crisprs = make_shared<vector<Crispr>>();
+
+        this->name = move(name);
+        this->genomeInfo = move(genomeInfo);
+        this->genomeSource = move(genomeSource);
+
+        // Generate random UUID and convert to string for ID
+        basic_random_generator<boost::mt19937> uuidGen;
+        uuid idRaw = uuidGen();
+        this->id = boost::uuids::to_string(idRaw);
     }
 
     string Genome::getId() {
@@ -27,6 +38,6 @@ namespace crisprsearch::location {
     }
 
     void Genome::addCrispr(Crispr crispr) {
-
+        crisprs->push_back(move(crispr));
     }
 }
