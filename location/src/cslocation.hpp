@@ -14,6 +14,9 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/copy.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/string_generator.hpp>
 
 #include "rapidjson/document.h"
 
@@ -35,6 +38,7 @@ using std::endl;
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
 using boost::iostreams::gzip_decompressor;
+using boost::uuids::uuid;
 
 extern string CRISPR_CAS_FINDER_PATH;
 
