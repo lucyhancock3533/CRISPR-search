@@ -10,4 +10,16 @@ namespace crisprsearch::location {
     LocationDb::~LocationDb() {
         sqlite3_close(dbConnection);
     }
+
+    int LocationDb::writeGenomeRecord(Genome genome) {
+        return 1;
+    }
+
+    int LocationDb::writeRegionRecord(Region region) {
+        return 1;
+    }
+
+    int LocationDb::writeCrisprRecord(Crispr crispr) {
+        return 1;
+    }
 }
