@@ -35,8 +35,8 @@ TEST(locDatabase, testRegionWrite) {
     bool regionFound = false;
     sqlite3_open(path.c_str(), &dbConnection);
     sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
-    sqlite3_close(dbConnection);
     ASSERT_TRUE(regionFound);
+    sqlite3_close(dbConnection);
 }
 
 /**
@@ -67,8 +67,12 @@ TEST(locDatabase, testCrisprWrite) {
     bool regionFound = false;
     sqlite3_open(path.c_str(), &dbConnection);
     sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
-    sqlite3_close(dbConnection);
     ASSERT_TRUE(regionFound);
+    statement = "SELECT * FROM Regions WHERE crisprId = '" + c.getId() + "'";
+    regionFound = false;
+    sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
+    ASSERT_TRUE(regionFound);
+    sqlite3_close(dbConnection);
 }
 
 /**
@@ -101,6 +105,14 @@ TEST(locDatabase, testGenomeWrite) {
     bool regionFound = false;
     sqlite3_open(path.c_str(), &dbConnection);
     sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
-    sqlite3_close(dbConnection);
     ASSERT_TRUE(regionFound);
+    statement = "SELECT * FROM CRISPR WHERE genomeId = '" + g.getId() + "'";
+    regionFound = false;
+    sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
+    ASSERT_TRUE(regionFound);
+    statement = "SELECT * FROM Regions WHERE crisprId = '" + c.getId() + "'";
+    regionFound = false;
+    sqlite3_exec(dbConnection, statement.c_str(), boolCallback, &regionFound, NULL);
+    ASSERT_TRUE(regionFound);
+    sqlite3_close(dbConnection);
 }
