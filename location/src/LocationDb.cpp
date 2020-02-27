@@ -48,7 +48,57 @@ namespace crisprsearch::location {
     }
 
     void LocationDb::writeGenomeRecord(Genome genome) {
-        throw SQLException();
+        // Prepare SQL statement for insertion
+        sqlite3_stmt* stmt;
+        int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_GENOME, -1, &stmt, nullptr);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Bind parameters
+        string id = genome.getId();
+        errorCode = sqlite3_bind_text(stmt, 1, id.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string name = genome.getName();
+        errorCode = sqlite3_bind_text(stmt, 2, name.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string genomeInfo = genome.getGenomeInfo();
+        errorCode = sqlite3_bind_text(stmt, 3, genomeInfo.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string genomeSource = genome.getGenomeSource();
+        errorCode = sqlite3_bind_text(stmt, 4, genomeSource.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Execute and finalise statement
+        errorCode = sqlite3_step(stmt);
+        if (errorCode != SQLITE_DONE) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_finalize(stmt);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Insert associated crispr
+        shared_ptr<vector<Crispr>> crispr = genome.getCrispr();
+        for(int pos = 0; pos < (*crispr).size(); pos++) {
+            writeCrisprRecord((*crispr)[pos], genome.getId());
+        }
     }
 
     void LocationDb::writeRegionRecord(Region region, string crisprId, int regionNo) {
