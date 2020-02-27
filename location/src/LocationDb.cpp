@@ -47,11 +47,11 @@ namespace crisprsearch::location {
         sqlite3_close(dbConnection);
     }
 
-    int LocationDb::writeGenomeRecord(Genome genome) {
-        return 1;
+    void LocationDb::writeGenomeRecord(Genome genome) {
+        throw SQLException();
     }
 
-    int LocationDb::writeRegionRecord(Region region, string crisprId, int regionNo) {
+    void LocationDb::writeRegionRecord(Region region, string crisprId, int regionNo) {
         // Prepare SQL statement for insertion
         sqlite3_stmt* stmt;
         int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_REGION, -1, &stmt, nullptr);
@@ -111,12 +111,10 @@ namespace crisprsearch::location {
             cout << sqlite3_errmsg(this->dbConnection) << endl;
             throw SQLException();
         }
-
-        return 0;
     }
 
-    int LocationDb::writeCrisprRecord(Crispr crispr, string genomeId) {
-        return 1;
+    void LocationDb::writeCrisprRecord(Crispr crispr, string genomeId) {
+        throw SQLException();
     }
 
     int LocationDb::checkSqlTablesCallback(void *locDbObj, int argc, char **argv, char **columnName) {
