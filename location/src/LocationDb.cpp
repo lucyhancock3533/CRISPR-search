@@ -6,6 +6,7 @@ namespace crisprsearch::location {
         // Open database
         int errorCode = sqlite3_open(path.c_str(), &dbConnection);
         if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
             throw SQLException();
         }
 
@@ -13,6 +14,7 @@ namespace crisprsearch::location {
         char *errMsg = 0;
         errorCode = sqlite3_exec(dbConnection, SQLITE_GET_TABLES, LocationDb::checkSqlTablesCallback, this, &errMsg);
         if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
             throw SQLException();
         }
 
@@ -20,18 +22,21 @@ namespace crisprsearch::location {
         if (!genomeExists) {
             errorCode = sqlite3_exec(dbConnection, SQLITE_CREATE_GENOME_TABLE, nullptr, nullptr, &errMsg);
             if (errorCode) {
+                cout << sqlite3_errmsg(this->dbConnection) << endl;
                 throw SQLException();
             }
         }
         if (!crisprExists) {
             errorCode = sqlite3_exec(dbConnection, SQLITE_CREATE_CRISPR_TABLE, nullptr, nullptr, &errMsg);
             if(errorCode) {
+                cout << sqlite3_errmsg(this->dbConnection) << endl;
                 throw SQLException();
             }
         }
         if (!regionExists) {
             errorCode = sqlite3_exec(dbConnection, SQLITE_CREATE_REGION_TABLE, nullptr, nullptr, &errMsg);
             if (errorCode) {
+                cout << sqlite3_errmsg(this->dbConnection) << endl;
                 throw SQLException();
             }
         }
@@ -46,11 +51,71 @@ namespace crisprsearch::location {
         return 1;
     }
 
-    int LocationDb::writeRegionRecord(Region region) {
-        return 1;
+    int LocationDb::writeRegionRecord(Region region, string crisprId, int regionNo) {
+        // Prepare SQL statement for insertion
+        sqlite3_stmt* stmt;
+        int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_REGION, -1, &stmt, nullptr);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Bind parameters
+        string id = region.getId();
+        errorCode = sqlite3_bind_text(stmt, 1, id.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_text(stmt, 2, crisprId.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string sequence = region.getSequence();
+        errorCode = sqlite3_bind_text(stmt, 3, sequence.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string type = region.getType();
+        errorCode = sqlite3_bind_text(stmt, 4, type.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 5, regionNo);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 6, region.getStartPos());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 7, region.getEndPos());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Execute and finalise statement
+        errorCode = sqlite3_step(stmt);
+        if (errorCode != SQLITE_DONE) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_finalize(stmt);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        return 0;
     }
 
-    int LocationDb::writeCrisprRecord(Crispr crispr) {
+    int LocationDb::writeCrisprRecord(Crispr crispr, string genomeId) {
         return 1;
     }
 
