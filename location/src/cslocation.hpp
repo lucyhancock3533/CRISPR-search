@@ -23,6 +23,8 @@
 
 #include <sqlite3.h>
 
+#include "csl_constants.hpp"
+
 using std::string;
 using std::unique_ptr;
 using std::shared_ptr;
