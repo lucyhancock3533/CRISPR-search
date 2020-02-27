@@ -14,8 +14,16 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/iostreams/copy.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/string_generator.hpp>
+#include <boost/uuid/random_generator.hpp>
+#include <boost/uuid/uuid_io.hpp>
 
 #include "rapidjson/document.h"
+
+#include <sqlite3.h>
+
+#include "csl_constants.hpp"
 
 using std::string;
 using std::unique_ptr;
@@ -29,10 +37,14 @@ using std::exception;
 using std::vector;
 using std::cout;
 using std::endl;
+using std::istreambuf_iterator;
+using std::move;
 
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
 using boost::iostreams::gzip_decompressor;
+using boost::uuids::uuid;
+using boost::uuids::basic_random_generator;
 
 extern string CRISPR_CAS_FINDER_PATH;
 

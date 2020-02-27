@@ -3,7 +3,7 @@
 #include "cslocation.hpp"
 #include "GenomeDecompression.hpp"
 
-using crisprsearch::location::GenomeDecompression;
+using namespace crisprsearch::location;
 
 /**
  * Tests a successful GZip decompression
@@ -18,7 +18,7 @@ TEST(locDecomp, testSuccess) {
         FAIL();
     }
     string correctData;
-    correctData.assign(std::istreambuf_iterator<char>(cdIn), std::istreambuf_iterator<char>());
+    correctData.assign(istreambuf_iterator<char>(cdIn), istreambuf_iterator<char>());
     cdIn.close();
 
     ASSERT_STREQ(correctData.c_str(), result.get());

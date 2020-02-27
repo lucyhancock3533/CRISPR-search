@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 project(CRISPR_search_location)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -23,15 +23,18 @@ include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
 include("${CMAKE_SOURCE_DIR}/rapidjson.cmake")
 include_directories(${RAPIDJSON_INCLUDE_DIR})
 
+include(${CMAKE_ROOT}/Modules/FindSQLite3.cmake)
+include_directories(${SQLite3_INCLUDE_DIRS})
+
 if(Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp)
+    add_executable(cslocation src/main.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp src/Crispr.cpp src/Crispr.hpp src/Genome.cpp src/Genome.hpp src/csl_constants.hpp)
     add_dependencies(cslocation rapidjson)
-    target_link_libraries(cslocation z ${Boost_LIBRARIES})
+    target_link_libraries(cslocation z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES})
 
-    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp)
+    add_executable(cslocation-test test_src/test_main.cpp test_src/test_decompression.cpp src/GenomeDecompression.cpp src/GenomeDecompression.hpp src/cslocation.hpp src/CsLocationSetupJsonParser.cpp src/CsLocationSetupJsonParser.hpp test_src/test_setupjson.cpp src/LocationDb.cpp src/LocationDb.hpp src/Region.cpp src/Region.hpp test_src/test_region.cpp src/Crispr.cpp src/Crispr.hpp test_src/test_crispr.cpp src/Genome.cpp src/Genome.hpp test_src/test_genome.cpp test_src/test_locationdb.cpp src/csl_constants.hpp)
     add_dependencies(cslocation-test rapidjson)
-    target_link_libraries(cslocation-test z ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
+    target_link_libraries(cslocation-test z ${SQLite3_LIBRARIES} ${Boost_LIBRARIES} ${GTEST_LIBRARIES} pthread)
 	
 	install(TARGETS cslocation DESTINATION bin)
 endif()
