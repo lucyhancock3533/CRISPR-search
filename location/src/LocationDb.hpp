@@ -27,9 +27,9 @@ namespace crisprsearch::location {
     public:
         explicit LocationDb(string path);
         ~LocationDb();
-        int writeGenomeRecord(Genome genome);
-        int writeCrisprRecord(Crispr crispr, string genomeId);
-        int writeRegionRecord(Region region, string crisprId, int regionNo);
+        void writeGenomeRecord(Genome genome);
+        void writeCrisprRecord(Crispr crispr, string genomeId);
+        void writeRegionRecord(Region region, string crisprId, int regionNo);
     };
 }
 

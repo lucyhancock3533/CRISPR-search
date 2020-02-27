@@ -26,7 +26,7 @@ TEST(locDatabase, testRegionWrite) {
     auto db = new LocationDb("test_data/" + id + ".db");
 
     Region r = Region("seqTest", "typeTest", 100, 399);
-    ASSERT_EQ(0, db->writeRegionRecord(r, "", 0));
+    ASSERT_NO_THROW(db->writeRegionRecord(r, "", 0));
     delete db;
 
     sqlite3* dbConnection;
@@ -58,7 +58,7 @@ TEST(locDatabase, testCrisprWrite) {
     c.addRegion(r2);
     c.addRegion(r3);
 
-    ASSERT_EQ(0, db->writeCrisprRecord(c, ""));
+    ASSERT_NO_THROW(db->writeCrisprRecord(c, ""));
     delete db;
 
     sqlite3* dbConnection;
@@ -92,7 +92,7 @@ TEST(locDatabase, testGenomeWrite) {
     c.addRegion(r3);
     g.addCrispr(c);
 
-    ASSERT_EQ(0, db->writeGenomeRecord(g));
+    ASSERT_NO_THROW(db->writeGenomeRecord(g));
     delete db;
 
     sqlite3* dbConnection;
