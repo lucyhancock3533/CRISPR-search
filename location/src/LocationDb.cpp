@@ -114,7 +114,70 @@ namespace crisprsearch::location {
     }
 
     void LocationDb::writeCrisprRecord(Crispr crispr, string genomeId) {
-        throw SQLException();
+        // Prepare SQL statement for insertion
+        sqlite3_stmt* stmt;
+        int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_CRISPR, -1, &stmt, nullptr);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Bind parameters
+        string id = crispr.getId();
+        errorCode = sqlite3_bind_text(stmt, 1, id.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_text(stmt, 2, genomeId.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        string sourceSequence = crispr.getSourceAssembly();
+        errorCode = sqlite3_bind_text(stmt, 3, sourceSequence.c_str(), -1, NULL);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 4, crispr.getDrLength());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 5, crispr.getSpacerCount());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 6, crispr.getEvidenceLevel());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_bind_int(stmt, 7, (*crispr.getRegions()).size());
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Execute and finalise statement
+        errorCode = sqlite3_step(stmt);
+        if (errorCode != SQLITE_DONE) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+        errorCode = sqlite3_finalize(stmt);
+        if (errorCode) {
+            cout << sqlite3_errmsg(this->dbConnection) << endl;
+            throw SQLException();
+        }
+
+        // Insert associated regions
+        shared_ptr<vector<Region>> regions = crispr.getRegions();
+        for(int pos = 0; pos < (*regions).size(); pos++) {
+            writeRegionRecord((*regions)[pos], crispr.getId(), pos);
+        }
     }
 
     int LocationDb::checkSqlTablesCallback(void *locDbObj, int argc, char **argv, char **columnName) {
