@@ -1,5 +1,6 @@
 #include "cslocation.hpp"
 #include "CsLocationSetupJsonParser.hpp"
+#include "GenomeLocation.hpp"
 
 string CRISPR_CAS_FINDER_PATH;
 
@@ -39,5 +40,11 @@ int main(int argc, char** argv) {
         return 1;
     }
 
+    // Process genomes
+    vector<CsLocationFile> files = setup.getFiles();
+    for(int pos = 0; pos < files.size(); pos++) {
+        GenomeLocation genome = GenomeLocation(files[pos].fileName);
+        genome.loadGenome();
+    }
     return 0;
 }
