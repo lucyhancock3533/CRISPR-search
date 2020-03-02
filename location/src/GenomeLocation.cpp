@@ -59,6 +59,7 @@ namespace crisprsearch::location {
             cout << "Failed to execute CRISPRCasFinder." << endl;
         }
 
-        // TODO: Parse
+        genome->parseResultsJson("tmp/result/result.json");
+        dbConnection->writeGenomeRecord(*genome);
     }
 }
