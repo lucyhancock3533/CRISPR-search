@@ -11,7 +11,7 @@ include_directories(src/)
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.65.0 COMPONENTS iostreams regex)
+find_package(Boost 1.65.0 COMPONENTS filesystem iostreams regex)
 
 find_package(ZLIB)
 include_directories(${ZLIB_DEPS})

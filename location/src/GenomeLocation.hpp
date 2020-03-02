@@ -10,7 +10,7 @@ namespace crisprsearch::location {
         Genome* genome;
         string genomePath;
         LocationDb* dbConnection;
-        char* fileContent;
+        void processGenome();
     public:
         explicit GenomeLocation(string path, LocationDb* db, string name, string info, string source);
         ~GenomeLocation();

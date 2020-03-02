@@ -18,6 +18,8 @@
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/process.hpp>
 
 #include "rapidjson/document.h"
 
@@ -29,6 +31,7 @@ using std::string;
 using std::unique_ptr;
 using std::shared_ptr;
 using std::ifstream;
+using std::ofstream;
 using std::ios_base;
 using std::stringstream;
 using std::make_unique;
