@@ -3,8 +3,6 @@
 
 #include <utility>
 
-using namespace rapidjson;
-
 namespace crisprsearch::location {
     CsLocationSetupJsonParser::CsLocationSetupJsonParser(string json) {
         jsonString = move(json);

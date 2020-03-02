@@ -4,12 +4,6 @@
 #include "cslocation.hpp"
 
 namespace crisprsearch::location {
-    struct InvalidJSONException : public exception {
-        const char * what () const throw () {
-            return "Setup JSON was invalid or missing required parameters.";
-        }
-    };
-
     /**
      * Structure to store genome file information
      */

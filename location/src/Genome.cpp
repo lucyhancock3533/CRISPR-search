@@ -1,6 +1,7 @@
 #include "cslocation.hpp"
 #include "Genome.hpp"
 #include "Crispr.hpp"
+#include "Region.hpp"
 
 namespace crisprsearch::location {
 
@@ -39,5 +40,44 @@ namespace crisprsearch::location {
 
     void Genome::addCrispr(Crispr crispr) {
         crisprs->push_back(move(crispr));
+    }
+
+    void Genome::parseResultsJson(string path) {
+        // Load result JSON
+        ifstream resultFile(path);
+        if (!resultFile.good()) {
+            cout << "Could not load results file." << endl;
+            return;
+        }
+        string fileData;
+        fileData.assign(istreambuf_iterator<char>(resultFile), istreambuf_iterator<char>());
+        resultFile.close();
+
+        shared_ptr<Document> json = make_shared<Document>();
+        if(json->Parse(fileData.c_str()).HasParseError()) {
+            throw InvalidJSONException();
+        }
+
+        auto sequences =  (*json)["Sequences"].GetArray();
+        for(int pos = 0; pos < sequences.Size(); pos++) {
+            auto seqCrispr = sequences[pos]["Crisprs"].GetArray();
+            for(int pos = 0; pos < seqCrispr.Size(); pos++) {
+                auto crisprObj = seqCrispr[pos].GetObject();
+
+                Crispr crispr = Crispr(string(sequences[pos]["Id"].GetString())
+                        + string(sequences[pos]["Description"].GetString()), crisprObj["DR_Length"].GetInt(),
+                        crisprObj["Spacers"].GetInt(), crisprObj["Evidence_Level"].GetInt());
+                auto crRegions = crisprObj["Regions"].GetArray();
+
+                for(int pos = 0; pos < crRegions.Size(); pos++) {
+                    auto regionObj = crRegions[pos].GetObject();
+                    Region region = Region(string(regionObj["Sequence"].GetString()),
+                            string(regionObj["Type"].GetString()), regionObj["Start"].GetInt(), regionObj["End"].GetInt());
+                    crispr.addRegion(region);
+                }
+
+                this -> addCrispr(crispr);
+            }
+        }
     }
 }
