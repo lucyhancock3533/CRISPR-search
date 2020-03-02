@@ -49,6 +49,16 @@ using boost::iostreams::gzip_decompressor;
 using boost::uuids::uuid;
 using boost::uuids::basic_random_generator;
 
+using namespace rapidjson;
+
 extern string CRISPR_CAS_FINDER_PATH;
+
+namespace crisprsearch::location {
+    struct InvalidJSONException : public exception {
+        const char * what () const throw () {
+            return "Setup JSON was invalid or missing required parameters.";
+        }
+    };
+}
 
 #endif

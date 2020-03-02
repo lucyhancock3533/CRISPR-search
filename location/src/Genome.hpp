@@ -53,6 +53,11 @@ namespace crisprsearch::location {
          * @param crispr Crispr to add to Genome
          */
         void addCrispr(Crispr crispr);
+        /**
+         * Parse the CRISPRCasFinder results and build the genome
+         * @param path Full UNIX path to the CRISPRCasFinder results json
+         */
+        void parseResultsJson(string path);
     };
 }
 

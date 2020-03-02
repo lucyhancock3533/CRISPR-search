@@ -59,16 +59,6 @@ namespace crisprsearch::location {
             cout << "Failed to execute CRISPRCasFinder." << endl;
         }
 
-        // Load result JSON
-        ifstream resultFile("tmp/result/result.json");
-        if (!resultFile.good()) {
-            cout << "Could not load results file." << endl;
-            return;
-        }
-        string fileData;
-        fileData.assign(istreambuf_iterator<char>(resultFile), istreambuf_iterator<char>());
-        resultFile.close();
-
         // TODO: Parse
     }
 }

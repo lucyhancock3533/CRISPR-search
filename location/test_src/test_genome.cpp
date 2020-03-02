@@ -42,3 +42,13 @@ TEST(locGenome, testGenomeCrisprAdd) {
     ASSERT_EQ(c2.getId(), (*g.getCrispr())[1].getId());
     ASSERT_EQ(c3.getId(), (*g.getCrispr())[2].getId());
 }
+
+/**
+ * Test creating a Genome from the CRISPRCasFinder results json
+ */
+TEST(locGenome, testGenomeResultsJson) {
+    Genome g = Genome("name", "genomeSource", "genomeInfo");
+    g.parseResultsJson("test_data/result.json");
+    ASSERT_EQ(8, g.getCrispr().get()->size());
+    ASSERT_EQ(73, (*g.getCrispr().get())[0].getRegions().get()->size());
+}
