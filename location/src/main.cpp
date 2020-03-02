@@ -40,10 +40,15 @@ int main(int argc, char** argv) {
         return 1;
     }
 
+    // Open DB
+    LocationDb* locDb = new LocationDb(setup.getCrisprDbPath());
+
     // Process genomes
     vector<CsLocationFile> files = setup.getFiles();
     for(int pos = 0; pos < files.size(); pos++) {
-        GenomeLocation genome = GenomeLocation(files[pos].fileName);
+        cout << "[" << (pos + 1) << "/" << files.size() << "] Processing genome " << files[pos].genomeName << endl;
+        GenomeLocation genome = GenomeLocation(files[pos].fileName, locDb, files[pos].genomeName,
+                files[pos].genomeInfo, files[pos].genomeSource);
         genome.loadGenome();
     }
     return 0;

@@ -9,4 +9,7 @@
 #define SQLITE_INSERT_CRISPR "INSERT INTO CRISPR (id, genomeId, sourceSequence, drLength, spacers, evidenceLevel, regions) VALUES (?, ?, ?, ?, ?, ?, ?);"
 #define SQLITE_INSERT_GENOME "INSERT INTO Genomes (id, name, genomeInfo, genomeSource) VALUES (?, ?, ?, ?);"
 
+#define CCF_ARGS_STRING_1 "/CRISPRCasFinder.pl -q -i \"tmp/tmp.fa\" -log -out \"tmp/result\" -so "
+#define CCF_ARGS_STRING_2 "/sel392v2.so"
+
 #endif
