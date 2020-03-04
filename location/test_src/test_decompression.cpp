@@ -14,7 +14,7 @@ TEST(locDecomp, testSuccess) {
 
     // Load test data for correct decompression
     ifstream cdIn("test_data/locDecompSuccess.fa");
-    if(!cdIn.good()) {
+    if (!cdIn.good()) {
         FAIL();
     }
     string correctData;

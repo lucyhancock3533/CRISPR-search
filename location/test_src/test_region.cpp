@@ -22,8 +22,3 @@ TEST(locRegion, testRegionComponentCreate) {
     ASSERT_NO_THROW(id = string_generator()(r.getId()));
     ASSERT_NE(uuid::version_unknown, id.version());
 }
-
-/**
- * Test creating new region from JSON
- */
- // TODO: With JSON parsing feature

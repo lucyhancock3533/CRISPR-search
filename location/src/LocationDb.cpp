@@ -28,7 +28,7 @@ namespace crisprsearch::location {
         }
         if (!crisprExists) {
             errorCode = sqlite3_exec(dbConnection, SQLITE_CREATE_CRISPR_TABLE, nullptr, nullptr, &errMsg);
-            if(errorCode) {
+            if (errorCode) {
                 cout << sqlite3_errmsg(this->dbConnection) << endl;
                 throw SQLException();
             }
@@ -49,7 +49,7 @@ namespace crisprsearch::location {
 
     void LocationDb::writeGenomeRecord(Genome genome) {
         // Prepare SQL statement for insertion
-        sqlite3_stmt* stmt;
+        sqlite3_stmt *stmt;
         int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_GENOME, -1, &stmt, nullptr);
         if (errorCode) {
             cout << sqlite3_errmsg(this->dbConnection) << endl;
@@ -96,14 +96,14 @@ namespace crisprsearch::location {
 
         // Insert associated crispr
         shared_ptr<vector<Crispr>> crispr = genome.getCrispr();
-        for(int pos = 0; pos < (*crispr).size(); pos++) {
+        for (int pos = 0; pos < (*crispr).size(); pos++) {
             writeCrisprRecord((*crispr)[pos], genome.getId());
         }
     }
 
     void LocationDb::writeRegionRecord(Region region, string crisprId, int regionNo) {
         // Prepare SQL statement for insertion
-        sqlite3_stmt* stmt;
+        sqlite3_stmt *stmt;
         int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_REGION, -1, &stmt, nullptr);
         if (errorCode) {
             cout << sqlite3_errmsg(this->dbConnection) << endl;
@@ -165,7 +165,7 @@ namespace crisprsearch::location {
 
     void LocationDb::writeCrisprRecord(Crispr crispr, string genomeId) {
         // Prepare SQL statement for insertion
-        sqlite3_stmt* stmt;
+        sqlite3_stmt *stmt;
         int errorCode = sqlite3_prepare_v2(this->dbConnection, SQLITE_INSERT_CRISPR, -1, &stmt, nullptr);
         if (errorCode) {
             cout << sqlite3_errmsg(this->dbConnection) << endl;
@@ -225,7 +225,7 @@ namespace crisprsearch::location {
 
         // Insert associated regions
         shared_ptr<vector<Region>> regions = crispr.getRegions();
-        for(int pos = 0; pos < (*regions).size(); pos++) {
+        for (int pos = 0; pos < (*regions).size(); pos++) {
             writeRegionRecord((*regions)[pos], crispr.getId(), pos);
         }
     }
@@ -234,14 +234,14 @@ namespace crisprsearch::location {
         // Get name of table in record
         string tblName(argv[2]);
         // Set appropriate bool
-        if(tblName == "Genomes") {
-            ((LocationDb*)locDbObj)->genomeExists = true;
+        if (tblName == "Genomes") {
+            ((LocationDb *) locDbObj)->genomeExists = true;
         }
-        if(tblName == "CRISPR") {
-            ((LocationDb*)locDbObj)->crisprExists = true;
+        if (tblName == "CRISPR") {
+            ((LocationDb *) locDbObj)->crisprExists = true;
         }
-        if(tblName == "Regions") {
-            ((LocationDb*)locDbObj)->regionExists = true;
+        if (tblName == "Regions") {
+            ((LocationDb *) locDbObj)->regionExists = true;
         }
         return 0;
     }

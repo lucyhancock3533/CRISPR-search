@@ -9,3 +9,11 @@ Watson, Mick. (2018). Assembly of 913 microbial genomes from metagenomic sequenc
 locDecompInvalid.fa:
 Watson, Mick. (2018). Assembly of 913 microbial genomes from metagenomic sequencing of the cow rumen, [dataset]. The Roslin Institute and Royal (Dick) School of Veterinary Studies. University of Edinburgh. https://doi.org/10.7488/ds/2296.
 * RUG221.fa
+
+result.json:
+Watson, Mick. (2018). The genomic and proteomic landscape of the rumen microbiome revealed by comprehensive genome-resolved metagenomics, [dataset]. University of Edinburgh. The Roslin Institute. Royal (Dick) School of Veterinary Studies. https://doi.org/10.7488/ds/2470.
+* mags/RUG10135.fa.gz
+
+bugresult.json
+Watson, Mick. (2018). The genomic and proteomic landscape of the rumen microbiome revealed by comprehensive genome-resolved metagenomics, [dataset]. University of Edinburgh. The Roslin Institute. Royal (Dick) School of Veterinary Studies. https://doi.org/10.7488/ds/2470.
+* mags/tig00000032.fa.gz
