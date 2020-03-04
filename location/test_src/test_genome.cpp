@@ -52,3 +52,12 @@ TEST(locGenome, testGenomeResultsJson) {
     ASSERT_EQ(8, g.getCrispr().get()->size());
     ASSERT_EQ(73, (*g.getCrispr().get())[0].getRegions().get()->size());
 }
+
+/**
+ * Test creating a Genome from the CRISPRCasFinder results json with more crispr than sequences
+ */
+TEST(locGenome, testGenomeResultsJsonMoreCrispr) {
+    Genome g = Genome("name", "genomeSource", "genomeInfo");
+    g.parseResultsJson("test_data/bugresult.json");
+    ASSERT_EQ(9, g.getCrispr().get()->size());
+}
