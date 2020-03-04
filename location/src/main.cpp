@@ -6,6 +6,8 @@ string CRISPR_CAS_FINDER_PATH;
 
 using namespace crisprsearch::location;
 
+void printHelp(char *cmd);
+
 /// Location tool application main entry function
 int main(int argc, char **argv) {
     if (argc != 2) {
@@ -16,7 +18,7 @@ int main(int argc, char **argv) {
     }
 
     if (string(argv[1]) == "--help") {
-        cout << "Not implemented." << endl;
+        printHelp(argv[0]);
         return 0;
     }
 
@@ -52,4 +54,16 @@ int main(int argc, char **argv) {
         genome.loadGenome();
     }
     return 0;
+}
+
+void printHelp(char *cmd) {
+    cout << "CRISPR-Search location tool" << endl;
+    cout << "Uses CRISPRCasFinder to search through a catalog of genomes and record CRISPR arrays into" << endl;
+    cout << "the database." << endl << endl;
+    cout << "Command should be called as " << cmd << " <setup json file>" << endl;
+    cout << "Setup JSON format:" << endl;
+    cout << "{\"ccfPath\":\"<Full path to CRISPRCasFinder.pl>\", \"dbPath\":\"<Path to output database>\"," << endl;
+    cout << "\"genomes\":[(Array of genome objects) {\"name\":\"<Genome name>\", \"source\":\"<Genome source>\","
+         << endl;
+    cout << "\"info\":\"<Link to genome information>\", \"file\":\"<Full path to (compressed) FASTA>\"}]}" << endl;
 }
