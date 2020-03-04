@@ -56,9 +56,15 @@ namespace crisprsearch::location {
         + CRISPR_CAS_FINDER_PATH + CCF_ARGS_STRING_2);
         if(result != 0) {
             cout << "Failed to execute CRISPRCasFinder." << endl;
+            return;
         }
 
-        genome->parseResultsJson("tmp/result/result.json");
+        try {
+            genome->parseResultsJson("tmp/result/result.json")
+        } catch(InvalidJSONException) {
+            cout << "Failed to parse genome JSON." << endl;
+            return;
+        }
         dbConnection->writeGenomeRecord(*genome);
     }
 }
