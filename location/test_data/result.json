@@ -1,0 +1,1426 @@
+{
+"Date":"2/3/2020_17:10:42",
+"Version":"4.2.19",
+"Command":"perl CRISPRCasFinder.pl -q -i tmp/tmp.fa -log -out tmp/result -so sel392v2.so",
+"Sequences":
+[{
+"Id":"RUG10135_asm_1",
+"Version":"RUG10135_asm_1",
+"Description":"scaffold_1;",
+"AT":48.3563515934697,
+"Length":677578,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_2",
+"Version":"RUG10135_asm_2",
+"Description":"scaffold_6;",
+"AT":44.8557697319725,
+"Length":287769,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_3",
+"Version":"RUG10135_asm_3",
+"Description":"scaffold_14;",
+"AT":44.543197633546,
+"Length":294449,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_4",
+"Version":"RUG10135_asm_4",
+"Description":"scaffold_65;",
+"AT":46.6857434307706,
+"Length":150969,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_5",
+"Version":"RUG10135_asm_5",
+"Description":"scaffold_69;",
+"AT":44.6642143560675,
+"Length":149247,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_6",
+"Version":"RUG10135_asm_6",
+"Description":"scaffold_84;",
+"AT":42.8325575407715,
+"Length":147591,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_7",
+"Version":"RUG10135_asm_7",
+"Description":"scaffold_99;",
+"AT":44.9604720307926,
+"Length":130161,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_8",
+"Version":"RUG10135_asm_8",
+"Description":"scaffold_108;",
+"AT":45.7173709926938,
+"Length":130574,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_9",
+"Version":"RUG10135_asm_9",
+"Description":"scaffold_153;",
+"AT":47.2430974958781,
+"Length":109779,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_10",
+"Version":"RUG10135_asm_10",
+"Description":"scaffold_187;",
+"AT":46.7116053565957,
+"Length":166449,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[
+{
+"Name": "RUG10135_asm_10_1",
+"Start": 69639,
+"End": 71821,
+"DR_Consensus": "GTACACCCCACGCGCGTGGGGATGAACCG",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 35,
+"Potential_Orientation": "-",
+"CRISPRDirection": "ND",
+"Evidence_Level": 4,
+"Conservation_DRs": 90.126979390092,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 69539,
+"End": 69638,
+"Sequence": "AAGCGGCAGCGGAAAACGGATGTACAATTGTTTGGTGTGGAGTAAACGGCCTGCAGTTTTATGCCAGCGGTATGGGTAAAACAAGAAGCGCTGCCAATAC",
+"Leader": 0,
+"AT": 51
+},
+ {
+"Type": "DR",
+"Start": 69639,
+"End": 69667,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69668,
+"End": 69700,
+"Sequence": "TACATCACCGTTGCTCCGGTGAACAAGCAGACC"
+},
+{
+"Type": "DR",
+"Start": 69701,
+"End": 69729,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69730,
+"End": 69762,
+"Sequence": "TGGGCATATGCGAAAATTGCTGCCATTGCCAGC"
+},
+{
+"Type": "DR",
+"Start": 69763,
+"End": 69791,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69792,
+"End": 69824,
+"Sequence": "CTCACTGGCTCTCTTAATCCGGATATAATAGGA"
+},
+{
+"Type": "DR",
+"Start": 69825,
+"End": 69853,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69854,
+"End": 69885,
+"Sequence": "TTGCTCTCATCGTTCTCGTTCAAGGCCGGTAC"
+},
+{
+"Type": "DR",
+"Start": 69886,
+"End": 69914,
+"Sequence": "GTACACCCCACGCACGTTGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69915,
+"End": 69947,
+"Sequence": "ATAGGCGGAGTAGGTACAAGCGGCGACGTTTTA"
+},
+{
+"Type": "DR",
+"Start": 69948,
+"End": 69976,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 69977,
+"End": 70008,
+"Sequence": "AAAAGTTTTTCCGCTAGAACATCTTCAAAATC"
+},
+{
+"Type": "DR",
+"Start": 70009,
+"End": 70037,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70038,
+"End": 70069,
+"Sequence": "TATCCGTTGTTTGCCAGTCCCAGCCCGGTGAA"
+},
+{
+"Type": "DR",
+"Start": 70070,
+"End": 70098,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCA"
+},
+{
+"Type": "Spacer",
+"Start": 70099,
+"End": 70131,
+"Sequence": "GCTTTACCGGTGAGCAGGTAATCCACGGCGCTA"
+},
+{
+"Type": "DR",
+"Start": 70132,
+"End": 70160,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70161,
+"End": 70192,
+"Sequence": "ATGCAGGATGCCAAGGGTGAGGTGCTGAATGT"
+},
+{
+"Type": "DR",
+"Start": 70193,
+"End": 70221,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70222,
+"End": 70253,
+"Sequence": "ACTCCTGCCAACATTCTGAAGAGGGGCATGGA"
+},
+{
+"Type": "DR",
+"Start": 70254,
+"End": 70282,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70283,
+"End": 70315,
+"Sequence": "TACGCCGTGGAACAATGGCAAGAACGCTATTTC"
+},
+{
+"Type": "DR",
+"Start": 70316,
+"End": 70344,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70345,
+"End": 70376,
+"Sequence": "CGGACCGTGGTATTCGGCAACATGACGCCGGA"
+},
+{
+"Type": "DR",
+"Start": 70377,
+"End": 70405,
+"Sequence": "GTACACCCCACGCACGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70406,
+"End": 70438,
+"Sequence": "AGCATACCGGTAGATCCTGAGCCGATCATCTTT"
+},
+{
+"Type": "DR",
+"Start": 70439,
+"End": 70467,
+"Sequence": "GTACACCCCACGCACGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70468,
+"End": 70499,
+"Sequence": "AATGAAGCAGAAGCGCTTTTCAATGCCTATGA"
+},
+{
+"Type": "DR",
+"Start": 70500,
+"End": 70528,
+"Sequence": "GTACACCCCACGCACGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70529,
+"End": 70561,
+"Sequence": "ATCACATTCAAGGCAAGTGGCGGTCTGGTGAGC"
+},
+{
+"Type": "DR",
+"Start": 70562,
+"End": 70590,
+"Sequence": "GTACACCCCACGCACGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70591,
+"End": 70622,
+"Sequence": "CAGCTGGGCGGGTATATGCACCATGGCAGCAA"
+},
+{
+"Type": "DR",
+"Start": 70623,
+"End": 70651,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70652,
+"End": 70684,
+"Sequence": "AAAGGCGTGATCCTGCTGGTTGTGCTGCTGGCA"
+},
+{
+"Type": "DR",
+"Start": 70685,
+"End": 70713,
+"Sequence": "GTACACCCCACGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70714,
+"End": 70746,
+"Sequence": "ACCGGTGACTGTGAGGTGGCGCATCCGCTGTTG"
+},
+{
+"Type": "DR",
+"Start": 70747,
+"End": 70775,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70776,
+"End": 70807,
+"Sequence": "TATCTGGAAGCGTTTGGAGACGAACCGGACGA"
+},
+{
+"Type": "DR",
+"Start": 70808,
+"End": 70836,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70837,
+"End": 70869,
+"Sequence": "TACAACGGACGGAAGAAAAAGTTTGCTGAAGAC"
+},
+{
+"Type": "DR",
+"Start": 70870,
+"End": 70898,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70899,
+"End": 70931,
+"Sequence": "TTCGTGGCCGTCATCCCGCCCTCCAGGATCACC"
+},
+{
+"Type": "DR",
+"Start": 70932,
+"End": 70960,
+"Sequence": "GTATACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 70961,
+"End": 70993,
+"Sequence": "TATTGGTCGCCCACGAAAAAACTGATGGTGCTG"
+},
+{
+"Type": "DR",
+"Start": 70994,
+"End": 71022,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71023,
+"End": 71054,
+"Sequence": "ACGGAAACCGGATACCTGGCCAGCCATGAGGC"
+},
+{
+"Type": "DR",
+"Start": 71055,
+"End": 71083,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71084,
+"End": 71115,
+"Sequence": "CTGCTGGTCAACGAAGCGTTTATCTTCATTCC"
+},
+{
+"Type": "DR",
+"Start": 71116,
+"End": 71144,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71145,
+"End": 71177,
+"Sequence": "ACAACCGGCGGAGTTGTTGCGGGCGGCAATACA"
+},
+{
+"Type": "DR",
+"Start": 71178,
+"End": 71206,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71207,
+"End": 71239,
+"Sequence": "TTCCGCAGCCGTGTATTTTTAACATGAACAGTA"
+},
+{
+"Type": "DR",
+"Start": 71240,
+"End": 71268,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71269,
+"End": 71301,
+"Sequence": "CGGCACCCGAAGAAGCCGAAGGGCGGCAGCGGA"
+},
+{
+"Type": "DR",
+"Start": 71302,
+"End": 71330,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71331,
+"End": 71363,
+"Sequence": "GACCAGGGCGGCTTTGTCGGCGGATGGCTGAAA"
+},
+{
+"Type": "DR",
+"Start": 71364,
+"End": 71392,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71393,
+"End": 71425,
+"Sequence": "CCTTTTCCACCTCGCGGAATGGTAAAACGGATC"
+},
+{
+"Type": "DR",
+"Start": 71426,
+"End": 71454,
+"Sequence": "GTACACCCCACATGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71455,
+"End": 71487,
+"Sequence": "CTGATCAAAAACAAGCGCGTGGTGAACTACTGC"
+},
+{
+"Type": "DR",
+"Start": 71488,
+"End": 71516,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71517,
+"End": 71548,
+"Sequence": "TACCTGGCGCAGGCGCTGAGTCCGCAGTACTG"
+},
+{
+"Type": "DR",
+"Start": 71549,
+"End": 71577,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71578,
+"End": 71609,
+"Sequence": "TACCTGGCGCAGGCGCTGAGTCCGCAGTACTG"
+},
+{
+"Type": "DR",
+"Start": 71610,
+"End": 71638,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 71639,
+"End": 71670,
+"Sequence": "AATGAACAGAAAGAGCATAAAGAAGAAATGCA"
+},
+{
+"Type": "DR",
+"Start": 71671,
+"End": 71699,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71700,
+"End": 71731,
+"Sequence": "AGATGCTGGACACCATGGGCGTATGGTGCGAC"
+},
+{
+"Type": "DR",
+"Start": 71732,
+"End": 71760,
+"Sequence": "GTACACCCCACGTGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 71761,
+"End": 71792,
+"Sequence": "AACGGGATCCGCTTTCTGAAGTGGCGGGTTAT"
+},
+{
+"Type": "DR",
+"Start": 71793,
+"End": 71821,
+"Sequence": "GTACACCCCATGTGCATGGGGATGAACCG"
+},
+{
+"Type": "RightFLANK",
+"Start": 71822,
+"End": 71921,
+"Sequence": "AACGATGACGGATGGAGCACCTCCTGTTTGCTGTGTTGGTTTTATCTTAGAACGGCGGTGCGGAAATGGGAATGGTCTTTTACAACTCTTTTACAAAATA",
+"Leader": 1,
+"AT": 57
+}
+]
+},
+{
+"Name": "RUG10135_asm_10_2",
+"Start": 84919,
+"End": 85015,
+"DR_Consensus": "AGGGACACTCCCTGTCGTTCCATTTTTATTCTT",
+"Repeat_ID": "Unknown",
+"DR_Length": 33,
+"Spacers": 1,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 96.969696969697,
+"Conservation_Spacers": 100,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 84819,
+"End": 84918,
+"Sequence": "AGAAAACCTGAAGCCATTTTATGAACGTTTTGGCTTTTCCAATATGCTATGCGGGCAGATGGAAACATATCATGGATAGGAGAAAAAAGCTCGGAACGAC",
+"Leader": 1,
+"AT": 59
+},
+ {
+"Type": "DR",
+"Start": 84919,
+"End": 84951,
+"Sequence": "AGGGACACTCCCTGTCGTTCCATTTTTATTCTT"
+},
+{
+"Type": "Spacer",
+"Start": 84952,
+"End": 84982,
+"Sequence": "TCCCCTTGATGATACGGGTGGTAGGAACGAT"
+},
+{
+"Type": "DR",
+"Start": 84983,
+"End": 85015,
+"Sequence": "AGGGACAGTCCCTGTCGTTCCATTTTTATTCTT"
+},
+{
+"Type": "RightFLANK",
+"Start": 85016,
+"End": 85115,
+"Sequence": "CCCCTTTGATGATACGGGTGGTATGAATCTCTCCTTTGCACTCAACCGAAGCGCAGCGGATTTCATGGCATTCAGCGATGTTGCTGCAAACGAGGTTGCC",
+"Leader": 0,
+"AT": 48
+}
+]
+}]
+,
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_11",
+"Version":"RUG10135_asm_11",
+"Description":"scaffold_210;",
+"AT":42.2650237432455,
+"Length":97712,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_12",
+"Version":"RUG10135_asm_12",
+"Description":"scaffold_260;",
+"AT":43.6969636146701,
+"Length":89679,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_13",
+"Version":"RUG10135_asm_13",
+"Description":"scaffold_359;",
+"AT":43.1936964423102,
+"Length":75386,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_14",
+"Version":"RUG10135_asm_14",
+"Description":"scaffold_489;",
+"AT":47.3514151676142,
+"Length":64374,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_15",
+"Version":"RUG10135_asm_15",
+"Description":"scaffold_568;",
+"AT":43.0967941131066,
+"Length":58299,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[
+{
+"Name": "RUG10135_asm_15_1",
+"Start": 49288,
+"End": 49356,
+"DR_Consensus": "CGGGCTGGACCGGGGTTTCCGGC",
+"Repeat_ID": "Unknown",
+"DR_Length": 23,
+"Spacers": 1,
+"Potential_Orientation": "ND",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 56.5217391304348,
+"Conservation_Spacers": 100,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 49188,
+"End": 49287,
+"Sequence": "ACCGGCGGCTTTTCAGGGAGCGGCACGTCTTCCGCCGGGTTTTCCGGTTCCTCCGGATCTTCCGTACCGTCGGAAGGCGGCAGGATCAGACCGGGCTCAT",
+"Leader": 0,
+"AT": 35
+},
+ {
+"Type": "DR",
+"Start": 49288,
+"End": 49310,
+"Sequence": "CGGACTGGTCCGGATTGGCCGGC"
+},
+{
+"Type": "Spacer",
+"Start": 49311,
+"End": 49332,
+"Sequence": "AGGACCGGCGGCTCCTGCGGTT"
+},
+{
+"Type": "DR",
+"Start": 49333,
+"End": 49355,
+"Sequence": "CCGGCTGAACCGGCTGTTCGGGA"
+},
+{
+"Type": "RightFLANK",
+"Start": 49357,
+"End": 49456,
+"Sequence": "GTGCGGGCTGCACCGGATTATCCGGTTTTGGCTGTTCTGCCGGCGGGTTGTTCTGCGCCGGAGTGACAGGCTGTTCGGGCTGAGTCTGCTCTGCCGGCCG",
+"Leader": 0,
+"AT": 34
+}
+]
+},
+{
+"Name": "RUG10135_asm_15_2",
+"Start": 49498,
+"End": 49698,
+"DR_Consensus": "CGGGCTGGACCGGGGTTTCCGGC",
+"Repeat_ID": "Unknown",
+"DR_Length": 23,
+"Spacers": 3,
+"Potential_Orientation": "ND",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 82.0758423960075,
+"Conservation_Spacers": 36.3636363636364,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 49398,
+"End": 49497,
+"Sequence": "GGCGGGTTGTTCTGCGCCGGAGTGACAGGCTGTTCGGGCTGAGTCTGCTCTGCCGGCCGGGTTTGTTCTGCCGGGGTGCTGTCATTCTGTGCCGGGGTCA",
+"Leader": 0,
+"AT": 34
+},
+ {
+"Type": "DR",
+"Start": 49498,
+"End": 49520,
+"Sequence": "CGGGCTGGACCGGGGTTTCCGGC"
+},
+{
+"Type": "Spacer",
+"Start": 49521,
+"End": 49563,
+"Sequence": "TTTGTCTGTTCATTATCCCGGCTGTCATCCTGTGCCGGAGGGG"
+},
+{
+"Type": "DR",
+"Start": 49564,
+"End": 49586,
+"Sequence": "CGGGCTGGACCGGGCTTTCCGGC"
+},
+{
+"Type": "Spacer",
+"Start": 49587,
+"End": 49620,
+"Sequence": "GGGGTCTGCGGCGGATCGGTCTGCCCGGGATCGG"
+},
+{
+"Type": "DR",
+"Start": 49621,
+"End": 49643,
+"Sequence": "CAGGCTGTACCGGGGTTTCCGGC"
+},
+{
+"Type": "Spacer",
+"Start": 49644,
+"End": 49674,
+"Sequence": "TGTACGGGCAGATCAGTCTGCGCGGAAGCGC"
+},
+{
+"Type": "DR",
+"Start": 49675,
+"End": 49697,
+"Sequence": "CGGGCTGTACCGGGTTTTCCGGA"
+},
+{
+"Type": "RightFLANK",
+"Start": 49699,
+"End": 49798,
+"Sequence": "TCGCGGGGTTCTGCTGTCCCGGGGTCACCGGTGTTCCGGAATCATCCTGTCCGGACGGCGGATTTTCCGGGGGATTCTGGGAGCCCGGCTGGACGGGTGT",
+"Leader": 0,
+"AT": 33
+}
+]
+},
+{
+"Name": "RUG10135_asm_15_3",
+"Start": 49783,
+"End": 49850,
+"DR_Consensus": "CGGGCTGGACCGGGGTTTCCGGC",
+"Repeat_ID": "Unknown",
+"DR_Length": 23,
+"Spacers": 1,
+"Potential_Orientation": "ND",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 60.8695652173913,
+"Conservation_Spacers": 100,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 49683,
+"End": 49782,
+"Sequence": "ACCGGGTTTTCCGGATTCGCGGGGTTCTGCTGTCCCGGGGTCACCGGTGTTCCGGAATCATCCTGTCCGGACGGCGGATTTTCCGGGGGATTCTGGGAGC",
+"Leader": 0,
+"AT": 36
+},
+ {
+"Type": "DR",
+"Start": 49783,
+"End": 49805,
+"Sequence": "CCGGCTGGACGGGTGTGTCCGGA"
+},
+{
+"Type": "Spacer",
+"Start": 49806,
+"End": 49827,
+"Sequence": "TTATCGGGCGTTCCCGGATTCA"
+},
+{
+"Type": "DR",
+"Start": 49828,
+"End": 49850,
+"Sequence": "CGGGCGTGTCCGGATTGTCAGGC"
+},
+{
+"Type": "RightFLANK",
+"Start": 49851,
+"End": 49950,
+"Sequence": "GTTCCCGGATTCACGGGGTCATCCGGATTCTCAGGGGTGCCCGGAGTGTCAGGAGTGTCCGGCGTATTGGGATTATCCGGCTTGTCTGGTTCTTCCGGCC",
+"Leader": 0,
+"AT": 39
+}
+]
+}]
+,
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_16",
+"Version":"RUG10135_asm_16",
+"Description":"scaffold_571;",
+"AT":47.2745194677181,
+"Length":60870,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_17",
+"Version":"RUG10135_asm_17",
+"Description":"scaffold_687;",
+"AT":42.4213713797395,
+"Length":53829,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_18",
+"Version":"RUG10135_asm_18",
+"Description":"scaffold_722;",
+"AT":43.2225226658184,
+"Length":94305,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_19",
+"Version":"RUG10135_asm_19",
+"Description":"scaffold_778;",
+"AT":46.8978204959733,
+"Length":53269,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_20",
+"Version":"RUG10135_asm_20",
+"Description":"scaffold_782;",
+"AT":46.4545509500877,
+"Length":49627,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_21",
+"Version":"RUG10135_asm_21",
+"Description":"scaffold_994;",
+"AT":48.0975562498486,
+"Length":41289,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_22",
+"Version":"RUG10135_asm_22",
+"Description":"scaffold_1068;",
+"AT":47.9630628201672,
+"Length":74180,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_23",
+"Version":"RUG10135_asm_23",
+"Description":"scaffold_1107;",
+"AT":44.9796489772639,
+"Length":38573,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_24",
+"Version":"RUG10135_asm_24",
+"Description":"scaffold_1215;",
+"AT":45.2639580217247,
+"Length":40783,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_25",
+"Version":"RUG10135_asm_25",
+"Description":"scaffold_1216;",
+"AT":45.1430472388556,
+"Length":36072,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[
+{
+"Name": "RUG10135_asm_25_1",
+"Start": 6750,
+"End": 6822,
+"DR_Consensus": "AACTGTCCAAATCTTTGATTTGGG",
+"Repeat_ID": "Unknown",
+"DR_Length": 24,
+"Spacers": 1,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 95.8333333333333,
+"Conservation_Spacers": 100,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 6650,
+"End": 6749,
+"Sequence": "TCTTTTCTTCTCCACACTGCGGACTTTTTTCAGCATCTTTCTCGCATTGTTAACTGTTTATCTTGATGTTTCGGCCATAGTACACCAATAATTGTTGAGC",
+"Leader": 1,
+"AT": 61
+},
+ {
+"Type": "DR",
+"Start": 6750,
+"End": 6773,
+"Sequence": "AACTGTCCAAATCTTTGATTTGGG"
+},
+{
+"Type": "Spacer",
+"Start": 6774,
+"End": 6798,
+"Sequence": "CGAAGCTCTTTCGACTGCCATGATG"
+},
+{
+"Type": "DR",
+"Start": 6799,
+"End": 6822,
+"Sequence": "AACTGTCCAAATCTCTGATTTGGG"
+},
+{
+"Type": "RightFLANK",
+"Start": 6823,
+"End": 6922,
+"Sequence": "TAACAGTTCACATACAGAGGAGTGGCAGAAATCTCGAAAGAGCTGAGGTCAATCGAAAGGAAGTAATCTCCACTGTGTGGAGTTACGACCTTTGAGATTG",
+"Leader": 0,
+"AT": 56
+}
+]
+}]
+,
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_26",
+"Version":"RUG10135_asm_26",
+"Description":"scaffold_1314;",
+"AT":46.2774335818545,
+"Length":38092,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_27",
+"Version":"RUG10135_asm_27",
+"Description":"scaffold_1536;",
+"AT":44.0829763028587,
+"Length":41313,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_28",
+"Version":"RUG10135_asm_28",
+"Description":"scaffold_1541;",
+"AT":47.4489581140812,
+"Length":47510,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_29",
+"Version":"RUG10135_asm_29",
+"Description":"scaffold_1677;",
+"AT":43.8297434490328,
+"Length":29156,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_30",
+"Version":"RUG10135_asm_30",
+"Description":"scaffold_2068;",
+"AT":46.0301177629149,
+"Length":24371,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[
+{
+"Name": "RUG10135_asm_30_1",
+"Start": 14908,
+"End": 15008,
+"DR_Consensus": "GCTGTCATCCCGACCAAGGGTACTG",
+"Repeat_ID": "Unknown",
+"DR_Length": 25,
+"Spacers": 1,
+"Potential_Orientation": "-",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 96,
+"Conservation_Spacers": 100,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 14808,
+"End": 14907,
+"Sequence": "TTTCACCTTAACCCATGCCGCATGATAAATCCGCCCGCTCCGGAAGCCATCCCGACCCGGACACCCCACGTCGCATATAGAATCCATCCAGTCTATAAAA",
+"Leader": 0,
+"AT": 47
+},
+ {
+"Type": "DR",
+"Start": 14908,
+"End": 14932,
+"Sequence": "GCTGTCATCCCGACCAAGGGTACTG"
+},
+{
+"Type": "Spacer",
+"Start": 14933,
+"End": 14983,
+"Sequence": "CTCCCACAACCCTGCTGCCATCCCGACCCGGGCGCCGTTCCCCGCACCCTG"
+},
+{
+"Type": "DR",
+"Start": 14984,
+"End": 15008,
+"Sequence": "GCTGTCATCCCGACCAAGGGCACTG"
+},
+{
+"Type": "RightFLANK",
+"Start": 15009,
+"End": 15108,
+"Sequence": "TGTGCCCGTGTGGAGGGATCCCTTACTATAACAGCCCGGAAATCATCTTCCCGGGCTGTCTCTGATCATAATCAATCATGTATTTTCAATTTCTGAAACC",
+"Leader": 1,
+"AT": 55
+}
+]
+}]
+,
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_31",
+"Version":"RUG10135_asm_31",
+"Description":"scaffold_2138;",
+"AT":46.1092136126085,
+"Length":24301,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_32",
+"Version":"RUG10135_asm_32",
+"Description":"scaffold_2532;",
+"AT":42.189292543021,
+"Length":20920,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_33",
+"Version":"RUG10135_asm_33",
+"Description":"scaffold_2822;",
+"AT":47.9484112538354,
+"Length":19229,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_34",
+"Version":"RUG10135_asm_34",
+"Description":"scaffold_3200;",
+"AT":47.8494046980586,
+"Length":27969,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_35",
+"Version":"RUG10135_asm_35",
+"Description":"scaffold_3711;",
+"AT":44.6505219649197,
+"Length":18871,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_36",
+"Version":"RUG10135_asm_36",
+"Description":"scaffold_3714;",
+"AT":47.7203472661416,
+"Length":17393,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_37",
+"Version":"RUG10135_asm_37",
+"Description":"scaffold_3822;",
+"AT":46.0488505747126,
+"Length":18096,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_38",
+"Version":"RUG10135_asm_38",
+"Description":"scaffold_4725;",
+"AT":45.6583072100313,
+"Length":12760,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_39",
+"Version":"RUG10135_asm_39",
+"Description":"scaffold_5106;",
+"AT":49.3355613909445,
+"Length":12567,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_40",
+"Version":"RUG10135_asm_40",
+"Description":"scaffold_6825;",
+"AT":49.0610835311893,
+"Length":13899,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_41",
+"Version":"RUG10135_asm_41",
+"Description":"scaffold_7654;",
+"AT":45.9893048128342,
+"Length":11220,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_42",
+"Version":"RUG10135_asm_42",
+"Description":"scaffold_9238;",
+"AT":48.9819587628866,
+"Length":7760,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_43",
+"Version":"RUG10135_asm_43",
+"Description":"scaffold_9365;",
+"AT":48.4490590525633,
+"Length":7705,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_44",
+"Version":"RUG10135_asm_44",
+"Description":"scaffold_12121;",
+"AT":46.3108639631086,
+"Length":14746,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_45",
+"Version":"RUG10135_asm_45",
+"Description":"scaffold_19704;",
+"AT":48.9415965314971,
+"Length":3921,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_46",
+"Version":"RUG10135_asm_46",
+"Description":"scaffold_20077;",
+"AT":47.2322814278324,
+"Length":3866,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_47",
+"Version":"RUG10135_asm_47",
+"Description":"scaffold_20885;",
+"AT":44.595676541233,
+"Length":3747,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_48",
+"Version":"RUG10135_asm_48",
+"Description":"scaffold_26662;",
+"AT":48.1398332264272,
+"Length":3118,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_49",
+"Version":"RUG10135_asm_49",
+"Description":"scaffold_29661;",
+"AT":46.9670710571924,
+"Length":2885,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_50",
+"Version":"RUG10135_asm_50",
+"Description":"scaffold_30621;",
+"AT":47.3889875666075,
+"Length":2815,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_51",
+"Version":"RUG10135_asm_51",
+"Description":"scaffold_34168;",
+"AT":47.1967380224261,
+"Length":3924,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_52",
+"Version":"RUG10135_asm_52",
+"Description":"scaffold_37014;",
+"AT":47.2505091649695,
+"Length":2455,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_53",
+"Version":"RUG10135_asm_53",
+"Description":"scaffold_48717;",
+"AT":48.4118291347207,
+"Length":2739,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[
+{
+"Name": "RUG10135_asm_53_1",
+"Start": 879,
+"End": 1042,
+"DR_Consensus": "GAAATCGCCATACATCAGTGGGAAGGAG",
+"Repeat_ID": "Unknown",
+"DR_Length": 28,
+"Spacers": 2,
+"Potential_Orientation": "-",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 70.4833481911057,
+"Conservation_Spacers": 31.9148936170213,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 779,
+"End": 878,
+"Sequence": "GGTGATTTGGTGCCCGGTAACCATCTTGTACATGGCTGGATGACTCTCTAAATGCAAAGATTGTTCGGAGCGGGTGAAAATCGCCACCTAGCATCGGGCG",
+"Leader": 0,
+"AT": 48
+},
+ {
+"Type": "DR",
+"Start": 879,
+"End": 906,
+"Sequence": "TGAATCGCCAATAATCAGCGGGCAGAAA"
+},
+{
+"Type": "Spacer",
+"Start": 907,
+"End": 953,
+"Sequence": "TCGCCAAAAAGGCCATTGCACTGAGATTACCTGCTATCCTTATCACT"
+},
+{
+"Type": "DR",
+"Start": 954,
+"End": 981,
+"Sequence": "GAAATCGCCATACATCAGTGGGAAGGAG"
+},
+{
+"Type": "Spacer",
+"Start": 982,
+"End": 1014,
+"Sequence": "ATCACAGATCCCTGTAGACGAAGTGACGGACAG"
+},
+{
+"Type": "DR",
+"Start": 1015,
+"End": 1042,
+"Sequence": "GAAATCGCCATACATCAGTGGGAAGGAG"
+},
+{
+"Type": "RightFLANK",
+"Start": 1043,
+"End": 1142,
+"Sequence": "GCTTATGAAGAACAATGCACAGAACAATGACCTACAACAAATCATAACACAGGCACTGGATGACCTGAAGAGAGAACAAGGCGAATAGTTCGATCCTAAC",
+"Leader": 1,
+"AT": 58
+}
+]
+}]
+,
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_54",
+"Version":"RUG10135_asm_54",
+"Description":"scaffold_62797;",
+"AT":47.0753392606458,
+"Length":2137,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_55",
+"Version":"RUG10135_asm_55",
+"Description":"scaffold_68023;",
+"AT":47.0473401659346,
+"Length":2049,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_56",
+"Version":"RUG10135_asm_56",
+"Description":"scaffold_71098;",
+"AT":47.8444236176195,
+"Length":2134,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+},
+{
+"Id":"RUG10135_asm_57",
+"Version":"RUG10135_asm_57",
+"Description":"scaffold_80465;",
+"AT":48.5807352256864,
+"Length":2149,
+"Summary_CRISPR-Cas":"NA",
+"Crisprs":[],
+"Cas":[]
+}
+]
+}

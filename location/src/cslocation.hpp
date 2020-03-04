@@ -18,6 +18,8 @@
 #include <boost/uuid/string_generator.hpp>
 #include <boost/uuid/random_generator.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/process.hpp>
 
 #include "rapidjson/document.h"
 
@@ -29,6 +31,7 @@ using std::string;
 using std::unique_ptr;
 using std::shared_ptr;
 using std::ifstream;
+using std::ofstream;
 using std::ios_base;
 using std::stringstream;
 using std::make_unique;
@@ -46,6 +49,16 @@ using boost::iostreams::gzip_decompressor;
 using boost::uuids::uuid;
 using boost::uuids::basic_random_generator;
 
+using namespace rapidjson;
+
 extern string CRISPR_CAS_FINDER_PATH;
+
+namespace crisprsearch::location {
+    struct InvalidJSONException : public exception {
+        const char *what() const throw() {
+            return "Setup JSON was invalid or missing required parameters.";
+        }
+    };
+}
 
 #endif

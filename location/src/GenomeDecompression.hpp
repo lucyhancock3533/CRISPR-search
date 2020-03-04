@@ -4,7 +4,7 @@
 #include "cslocation.hpp"
 
 struct FileNotGoodException : public exception {
-    const char * what () const throw () {
+    const char *what() const throw() {
         return "Could not load file";
     }
 };
@@ -22,6 +22,7 @@ namespace crisprsearch::location {
          * @param path Full UNIX path to .fa.gz file
          */
         explicit GenomeDecompression(string path);
+
         /**
          * Decompress specified .fa.gz file
          * @return Byte array containing raw .fa file content
