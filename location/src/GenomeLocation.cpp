@@ -3,7 +3,6 @@
 #include "GenomeDecompression.hpp"
 
 namespace crisprsearch::location {
-
     GenomeLocation::GenomeLocation(string path, LocationDb* db, string name, string info, string source) {
         genomePath = path;
         dbConnection = db;

@@ -11,7 +11,7 @@ namespace crisprsearch::location {
         ifstream toDecompress(genomePath, ios_base::in | ios_base::binary);
 
         // Check file exists
-        if(!toDecompress.good()) {
+        if (!toDecompress.good()) {
             throw FileNotGoodException();
         }
 

@@ -22,22 +22,27 @@ namespace crisprsearch::location {
         string jsonString;
         vector<CsLocationFile> files;
         string crisprDbpath;
+
         void parseGenomesArray(shared_ptr<rapidjson::Document>);
+
     public:
         /**
          * Create new SetupJson object
          * @param json Full JSON setup string
          */
         explicit CsLocationSetupJsonParser(string json);
+
         /**
          * Parse the JSON within the file specified in the constructor and load into class
          */
         void parseJson();
+
         /**
          * Get a list of the genomes contained in the setup file
          * @return Vector of CsLocationFile structs containing input genome information
          */
         vector<CsLocationFile> getFiles();
+
         /**
          * Get a string containing the path to the CRISPR SQLite DB
          * @return Full UNIX path to CRISPR db file

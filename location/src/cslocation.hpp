@@ -55,7 +55,7 @@ extern string CRISPR_CAS_FINDER_PATH;
 
 namespace crisprsearch::location {
     struct InvalidJSONException : public exception {
-        const char * what () const throw () {
+        const char *what() const throw() {
             return "Setup JSON was invalid or missing required parameters.";
         }
     };

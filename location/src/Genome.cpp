@@ -4,7 +4,6 @@
 #include "Region.hpp"
 
 namespace crisprsearch::location {
-
     Genome::Genome(string name, string genomeSource, string genomeInfo) {
         crisprs = make_shared<vector<Crispr>>();
 
@@ -53,30 +52,35 @@ namespace crisprsearch::location {
         fileData.assign(istreambuf_iterator<char>(resultFile), istreambuf_iterator<char>());
         resultFile.close();
 
+        // Parse JSON document
         shared_ptr<Document> json = make_shared<Document>();
-        if(json->Parse(fileData.c_str()).HasParseError()) {
+        if (json->Parse(fileData.c_str()).HasParseError()) {
             throw InvalidJSONException();
         }
 
-        auto sequences =  (*json)["Sequences"].GetArray();
-        for(int pos = 0; pos < sequences.Size(); pos++) {
+        auto sequences = (*json)["Sequences"].GetArray();
+        for (int pos = 0; pos < sequences.Size(); pos++) {
+            // Extract CRISPR
             auto seqCrispr = sequences[pos]["Crisprs"].GetArray();
-            for(int cpos = 0; cpos < seqCrispr.Size(); cpos++) {
+            for (int cpos = 0; cpos < seqCrispr.Size(); cpos++) {
                 auto crisprObj = seqCrispr[cpos].GetObject();
 
                 Crispr crispr = Crispr(string(sequences[pos]["Id"].GetString())
-                        + string(sequences[pos]["Description"].GetString()), crisprObj["DR_Length"].GetInt(),
-                        crisprObj["Spacers"].GetInt(), crisprObj["Evidence_Level"].GetInt());
+                                       + string(sequences[pos]["Description"].GetString()),
+                                       crisprObj["DR_Length"].GetInt(),
+                                       crisprObj["Spacers"].GetInt(), crisprObj["Evidence_Level"].GetInt());
                 auto crRegions = crisprObj["Regions"].GetArray();
 
-                for(int rpos = 0; rpos < crRegions.Size(); rpos++) {
+                for (int rpos = 0; rpos < crRegions.Size(); rpos++) {
+                    // Extract regions
                     auto regionObj = crRegions[rpos].GetObject();
                     Region region = Region(string(regionObj["Sequence"].GetString()),
-                            string(regionObj["Type"].GetString()), regionObj["Start"].GetInt(), regionObj["End"].GetInt());
+                                           string(regionObj["Type"].GetString()), regionObj["Start"].GetInt(),
+                                           regionObj["End"].GetInt());
                     crispr.addRegion(region);
                 }
 
-                this -> addCrispr(crispr);
+                this->addCrispr(crispr);
             }
         }
     }
