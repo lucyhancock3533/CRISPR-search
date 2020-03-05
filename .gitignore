@@ -6,3 +6,4 @@
 */rapidjson/*
 *.db
 */tmp/*
+*.tmp
