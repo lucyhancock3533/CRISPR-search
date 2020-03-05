@@ -6,7 +6,7 @@ namespace crisprsearch::location {
         genomePath = move(path);
     }
 
-    unique_ptr<char[]> GenomeDecompression::decompress() {
+    char* GenomeDecompression::decompress() {
         // Decompress file using boost gzip filter
         ifstream toDecompress(genomePath, ios_base::in | ios_base::binary);
 
@@ -25,9 +25,9 @@ namespace crisprsearch::location {
         toDecompress.close();
 
         // Copy into output pointer
-        unique_ptr<char[]> outputPtr = make_unique<char[]>(output.str().length() + 1);
-        memcpy(outputPtr.get(), output.str().c_str(), output.str().length());
-        outputPtr.get()[output.str().length()] = '\0';
+        char* outputPtr = new char[output.str().length() + 1];
+        memcpy(outputPtr, output.str().c_str(), output.str().length());
+        outputPtr[output.str().length()] = '\0';
         return outputPtr;
     }
 }
