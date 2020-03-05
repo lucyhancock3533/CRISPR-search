@@ -17,3 +17,12 @@ Watson, Mick. (2018). The genomic and proteomic landscape of the rumen microbiom
 bugresult.json
 Watson, Mick. (2018). The genomic and proteomic landscape of the rumen microbiome revealed by comprehensive genome-resolved metagenomics, [dataset]. University of Edinburgh. The Roslin Institute. Royal (Dick) School of Veterinary Studies. https://doi.org/10.7488/ds/2470.
 * mags/tig00000032.fa.gz
+
+nofilter.fa.gz:
+Watson, Mick. (2018). The genomic and proteomic landscape of the rumen microbiome revealed by comprehensive genome-resolved metagenomics, [dataset]. University of Edinburgh. The Roslin Institute. Royal (Dick) School of Veterinary Studies. https://doi.org/10.7488/ds/2470.
+* mags/RUG10135.fa.gz
+
+filter.fasta:
+filter.post.fasta:
+The Hungate Project. http://www.rmgnetwork.org/hungate1000.html
+* Assemblies/3298477-finalContigs.fasta
