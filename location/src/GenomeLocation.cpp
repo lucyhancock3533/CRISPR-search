@@ -60,7 +60,7 @@ namespace crisprsearch::location {
         }
 
         // Delete temporary folder
-        //boost::filesystem::remove_all(tempFolder);
+        boost::filesystem::remove_all(tempFolder);
     }
 
     void GenomeLocation::processGenome() {
