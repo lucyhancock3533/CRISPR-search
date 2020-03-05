@@ -4,12 +4,14 @@
 #include <string>
 #include <memory>
 #include <utility>
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <fstream>
 #include <exception>
 #include <sstream>
 #include <vector>
+#include <cctype>
 
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -42,6 +44,8 @@ using std::cout;
 using std::endl;
 using std::istreambuf_iterator;
 using std::move;
+using std::isalnum;
+using std::remove_if;
 
 using boost::iostreams::input;
 using boost::iostreams::filtering_streambuf;
@@ -57,6 +61,12 @@ namespace crisprsearch::location {
     struct InvalidJSONException : public exception {
         const char *what() const throw() {
             return "Setup JSON was invalid or missing required parameters.";
+        }
+    };
+
+    struct FileNotGoodException : public exception {
+        const char *what() const throw() {
+            return "Could not load file";
         }
     };
 }
