@@ -1,6 +1,7 @@
 #include "cslocation.hpp"
 #include "GenomeLocation.hpp"
 #include "GenomeDecompression.hpp"
+#include "GenomeFilter.hpp"
 
 namespace crisprsearch::location {
     GenomeLocation::GenomeLocation(string path, LocationDb* db, string name, string info, string source) {
@@ -24,22 +25,34 @@ namespace crisprsearch::location {
         if(fileExt == "gz") {
             // Decompression path
             // Decompress and write temporary file
-            GenomeDecompression decompression = GenomeDecompression(genomePath);
-            unique_ptr<char[]> fileContent = decompression.decompress();
-            ofstream decompressedFile("tmp/tmp.fa", std::ios::out);
-            if(decompressedFile.good()) {
-                decompressedFile << fileContent.get();
-                decompressedFile.close();
+            char* fileContent;
+            try {
+                GenomeDecompression decompression = GenomeDecompression(genomePath);
+                fileContent = decompression.decompress();
+            } catch (FileNotGoodException) {
+                cout << "Failed to create FASTA file." << endl;
+            }
 
+            try {
+                GenomeFilter filter = GenomeFilter(fileContent);
+                filter.filter();
+                filter.save("tmp/tmp.fa");
                 processGenome();
+            } catch (FileNotGoodException) {
+                delete[] fileContent;
+                cout << "Failed to create FASTA file." << endl;
             }
         }
         else if(fileExt == "fa" || fileExt == "fasta" || fileExt == "fst" || fileExt == "fna") {
             // Ready to use path
-            boost::filesystem::path tempFile = "tmp/tmp.fa";
-            boost::filesystem::path sourceFile = genomePath;
-            boost::filesystem::copy_file(sourceFile, tempFile);
-            processGenome();
+            try {
+                GenomeFilter filter = GenomeFilter(genomePath);
+                filter.filter();
+                filter.save("tmp/tmp.fa");
+                processGenome();
+            } catch (FileNotGoodException) {
+                cout << "Failed to create FASTA file." << endl;
+            }
         }
         else {
             // File is invalid
@@ -47,7 +60,7 @@ namespace crisprsearch::location {
         }
 
         // Delete temporary folder
-        boost::filesystem::remove_all(tempFolder);
+        //boost::filesystem::remove_all(tempFolder);
     }
 
     void GenomeLocation::processGenome() {
@@ -60,7 +73,7 @@ namespace crisprsearch::location {
         }
 
         try {
-            genome->parseResultsJson("tmp/result/result.json")
+            genome->parseResultsJson("tmp/result/result.json");
         } catch(InvalidJSONException) {
             cout << "Failed to parse genome JSON." << endl;
             return;

@@ -10,7 +10,7 @@ using namespace crisprsearch::location;
  */
 TEST(locDecomp, testSuccess) {
     auto decomp = GenomeDecompression("test_data/locDecompSuccess.fa.gz");
-    unique_ptr<char[]> result = decomp.decompress();
+    char* result = decomp.decompress();
 
     // Load test data for correct decompression
     ifstream cdIn("test_data/locDecompSuccess.fa");
@@ -21,7 +21,8 @@ TEST(locDecomp, testSuccess) {
     correctData.assign(istreambuf_iterator<char>(cdIn), istreambuf_iterator<char>());
     cdIn.close();
 
-    ASSERT_STREQ(correctData.c_str(), result.get());
+    ASSERT_STREQ(correctData.c_str(), result);
+    delete[] result;
 }
 
 /**
