@@ -9,11 +9,11 @@ def setupParameters():
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == '--db' and (len(sys.argv) - (i + 1)) >= 1:
             csaSettings.dbPath = sys.argv[i+1]
-        if sys.argv[i] == '--out' and (len(sys.argv) - (i + 1)) >= 1:
+        elif sys.argv[i] == '--out' and (len(sys.argv) - (i + 1)) >= 1:
             csaSettings.outputPath = sys.argv[i+1]
-        if sys.argv[i] == '--evidence-level' and (len(sys.argv) - (i + 1)) >= 1:
+        elif sys.argv[i] == '--evidence-level' and (len(sys.argv) - (i + 1)) >= 1:
             csaSettings.evidenceLevel = int(sys.argv[i+1])
-        if sys.argv[i] == '--skip-stat-calc':
+        elif sys.argv[i] == '--skip-stat-calc':
             csaSettings.doStatCalc = False
 
     if csaSettings.dbPath == '':
