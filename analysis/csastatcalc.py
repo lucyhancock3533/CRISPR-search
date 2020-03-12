@@ -32,5 +32,3 @@ class StatCalc:
                 crispr = crispr + self.cursor.fetchall()
             iccCount = len(crispr)
             self.sourceCounts.append((source, icCount, iccCount))
-
-        print(self.sourceCounts)
