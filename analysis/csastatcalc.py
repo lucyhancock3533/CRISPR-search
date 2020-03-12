@@ -1,8 +1,7 @@
-def genBasicStats(dbConn, evidenceLevel, sourceList):
+def genBasicStats(cursor, evidenceLevel, sourceList):
     print('Generating statistics... (This may take some time)')
 
     # Generate all vs confident stats
-    cursor = dbConn.cursor()
     cursor.execute('SELECT id FROM CRISPR;')
     cCount = len(cursor.fetchall())
     cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ?;', [evidenceLevel])
