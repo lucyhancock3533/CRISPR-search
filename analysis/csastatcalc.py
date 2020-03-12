@@ -1,32 +1,36 @@
-def genBasicStats(cursor, evidenceLevel, sourceList):
-    print('Generating statistics... (This may take some time)')
-
-    # Generate all vs confident stats
-    cursor.execute('SELECT id FROM CRISPR;')
-    cCount = len(cursor.fetchall())
-    cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ?;', [evidenceLevel])
-    ccCount = len(cursor.fetchall())
-
-    # Generate for sources
+class StatCalc:
+    cursor = None
+    evidenceLevel = None
+    sourceList = None
     sourceCounts = []
-    for source in sourceList:
-        cursor.execute('SELECT id FROM Genomes WHERE genomeSource = ?;', [source])
-        idList = [x[0] for x in cursor.fetchall()]
-        crispr = []
-        for id in idList:
-            cursor.execute('SELECT id FROM CRISPR WHERE genomeId = ?;', [id])
-            crispr = crispr + cursor.fetchall()
-        icCount = len(crispr)
-        crispr = []
-        for id in idList:
-            cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ? AND genomeId = ?;', [evidenceLevel, id])
-            crispr = crispr + cursor.fetchall()
-        iccCount = len(crispr)
-        sourceCounts.append((source, icCount, iccCount))
 
-    html = "<p>CRISPR found: %s<br/>Confident CRISPR found: %s</p>" % (cCount, ccCount)
-    for x in sourceCounts:
-        nHtml = "<p>Source: %s<br/>CRISPR found: %s<br/>Confident CRISPR found: %s</p>" % x
-        html += nHtml
+    def __init__(self, cursor, evidenceLevel, sourceList):
+        self.cursor = cursor
+        self.evidenceLevel = evidenceLevel
+        self.sourceList = sourceList
 
-    return html
+    def genBasicStats(self):
+        # Generate all vs confident stats
+        self.cursor.execute('SELECT id FROM CRISPR;')
+        cCount = len(self.cursor.fetchall())
+        self.cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ?;', [self.evidenceLevel])
+        ccCount = len(self.cursor.fetchall())
+        self.sourceCounts.append(('All Data', cCount, ccCount))
+
+        # Generate for sources
+        for source in self.sourceList:
+            self.cursor.execute('SELECT id FROM Genomes WHERE genomeSource = ?;', [source])
+            idList = [x[0] for x in self.cursor.fetchall()]
+            crispr = []
+            for id in idList:
+                self.cursor.execute('SELECT id FROM CRISPR WHERE genomeId = ?;', [id])
+                crispr = crispr + self.cursor.fetchall()
+            icCount = len(crispr)
+            crispr = []
+            for id in idList:
+                self.cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ? AND genomeId = ?;', [self.evidenceLevel, id])
+                crispr = crispr + self.cursor.fetchall()
+            iccCount = len(crispr)
+            self.sourceCounts.append((source, icCount, iccCount))
+
+        print(self.sourceCounts)
