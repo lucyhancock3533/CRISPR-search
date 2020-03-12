@@ -1,5 +1,5 @@
 from csasettings import CsaSettings
-from csastatcalc import genBasicStats
+from csastatcalc import StatCalc
 from csadb import DbConnection
 
 if __name__ == "__main__":
@@ -16,7 +16,8 @@ if __name__ == "__main__":
     sourceList = list(sourceList)
     sourceList = [source[0] for source in sourceList]
 
-    # Generate base statistics
-    stats = genBasicStats(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
+    stats = StatCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
+    print('Generating statistics... (This may take some time)')
+    stats.genBasicStats()
 
     dbConnection.closeDatabase()
