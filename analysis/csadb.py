@@ -1,11 +1,10 @@
-from csasettings import csaSettings
 import sqlite3
 
 class DbConnection:
     dbConn = sqlite3.connect(':memory:')
 
-    def loadDatabase(self):
-        diskConn = sqlite3.connect(csaSettings.dbPath)
+    def loadDatabase(self, dbPath):
+        diskConn = sqlite3.connect(dbPath)
         # Copy database into memory and close disk database
         diskSql = "".join(line for line in diskConn.iterdump())
         self.dbConn.executescript(diskSql)
