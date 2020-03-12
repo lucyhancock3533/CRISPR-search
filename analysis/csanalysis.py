@@ -1,11 +1,12 @@
-from csasettings import csaSettings
+from csasettings import CsaSettings
 from csastatcalc import genBasicStats
 from csadb import DbConnection
 
 if __name__ == "__main__":
     print('CRISPR-search Analysis')
+    csaSettings = CsaSettings()
     dbConnection = DbConnection()
-    dbConnection.loadDatabase()
+    dbConnection.loadDatabase(csaSettings.dbPath)
 
     # Generate list of data sources
     cursor = dbConnection.getCursor()
