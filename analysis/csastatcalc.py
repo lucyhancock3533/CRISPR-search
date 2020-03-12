@@ -3,6 +3,7 @@ class StatCalc:
     evidenceLevel = None
     sourceList = None
     sourceCounts = []
+    sourcePercs = []
 
     def __init__(self, cursor, evidenceLevel, sourceList):
         self.cursor = cursor
@@ -32,3 +33,25 @@ class StatCalc:
                 crispr = crispr + self.cursor.fetchall()
             iccCount = len(crispr)
             self.sourceCounts.append((source, icCount, iccCount))
+
+    def genPercStats(self):
+        sources = [('All Sources', 'SELECT id FROM Genomes;', [])]
+        sources += [(x, 'SELECT id FROM Genomes WHERE genomeSource = ?;', [x]) for x in self.sourceList]
+        self.sourcePercs = [self.gpsCalc(x[0], x[1], x[2]) for x in sources]
+        print(self.sourcePercs)
+
+    def gpsCalc(self, source, sqlGen, params):
+        # Generate all present stats
+        self.cursor.execute(sqlGen, params)
+        idList = [x[0] for x in self.cursor.fetchall()]
+        wCrispr = 0
+        woCrispr = 0
+        for id in idList:
+            self.cursor.execute('SELECT id FROM CRISPR WHERE evidenceLevel >= ? AND genomeId = ?;', [self.evidenceLevel, id])
+            if len(self.cursor.fetchall()) == 0:
+                woCrispr += 1
+            else:
+                wCrispr += 1
+        wcP = (wCrispr / (woCrispr + wCrispr)) * 100
+        wocP = (woCrispr / (woCrispr + wCrispr)) * 100
+        return source, wcP, wocP
