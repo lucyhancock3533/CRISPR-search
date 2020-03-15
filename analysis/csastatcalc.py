@@ -38,7 +38,6 @@ class StatCalc:
         sources = [('All Sources', 'SELECT id FROM Genomes;', [])]
         sources += [(x, 'SELECT id FROM Genomes WHERE genomeSource = ?;', [x]) for x in self.sourceList]
         self.sourcePercs = [self.gpsCalc(x[0], x[1], x[2]) for x in sources]
-        print(self.sourcePercs)
 
     def gpsCalc(self, source, sqlGen, params):
         # Generate all present stats
