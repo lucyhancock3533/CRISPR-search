@@ -39,5 +39,7 @@ if __name__ == "__main__":
         print('Generating statistics... (This may take some time)')
         stats.genBasicStats()
         stats.genPercStats()
+        print(stats.sourceCounts)
+        print(stats.sourcePercs)
 
     dbConnection.closeDatabase()
