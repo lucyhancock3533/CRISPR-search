@@ -10,6 +10,9 @@ class DbConnection:
         self.dbConn.executescript(diskSql)
         diskConn.close()
 
+    def addSql(self, sql):
+        self.dbConn.executescript(sql)
+
     def getCursor(self):
         return self.dbConn.cursor()
 
