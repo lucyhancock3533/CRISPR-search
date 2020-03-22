@@ -3,6 +3,10 @@ import sqlite3
 class DbConnection:
     dbConn = sqlite3.connect(':memory:')
 
+    def changeConnDb(self, memDb):
+        self.dbConn.close()
+        self.dbConn = sqlite3.connect(memDb)
+
     def loadDatabase(self, dbPath):
         diskConn = sqlite3.connect(dbPath)
         # Copy database into memory and close disk database
