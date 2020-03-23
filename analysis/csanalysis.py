@@ -1,6 +1,7 @@
 from csasettings import CsaSettings
 from csastatcalc import StatCalc
 from csadb import DbConnection
+from csadistribution import DistCalc
 import sys
 
 csaSettings = CsaSettings()
@@ -15,6 +16,8 @@ def setupParameters():
             csaSettings.evidenceLevel = int(sys.argv[i+1])
         elif sys.argv[i] == '--skip-stat-calc':
             csaSettings.doStatCalc = False
+        elif sys.argv[i] == '--skip-dist-calc':
+            csaSettings.doDistCalc = False
 
     if csaSettings.dbPath == '':
         print('No database was specified, run %s --help for more information.' % sys.argv[0])
@@ -41,5 +44,10 @@ if __name__ == "__main__":
         stats.genPercStats()
         print(stats.sourceCounts)
         print(stats.sourcePercs)
+
+    dist = DistCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
+    if csaSettings.doDistCalc:
+        print('Generating distributions... (This may take some time)')
+        dist.generateSpacerLengthHist()
 
     dbConnection.closeDatabase()
