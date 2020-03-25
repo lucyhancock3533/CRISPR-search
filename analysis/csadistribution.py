@@ -1,3 +1,9 @@
+import itertools
+import matplotlib.pyplot as plot
+from matplotlib.ticker import PercentFormatter
+import numpy as np
+
+
 class DistCalc:
     cursor = None
     sourceList = None
@@ -10,6 +16,7 @@ class DistCalc:
         self.evidenceLevel = evidenceLevel
 
     """Create Lists of IDs for use in distribution calculation functions"""
+
     def setupIdLists(self):
         self.ids = []
         for source in self.sourceList:
@@ -26,11 +33,22 @@ class DistCalc:
         if self.ids == None:
             self.setupIdLists()
         lengths = []
+        bins = 0
         for source in self.ids:
             spacers = []
             for id in source[2]:
                 self.cursor.execute('SELECT sequence FROM Regions WHERE crisprId = ? AND type = ?;', [id, 'Spacer'])
                 spacers = spacers + [x[0] for x in self.cursor.fetchall()]
             spacers = list(filter(lambda x: 'N' not in x, spacers))
-            spacerLengths = list(map(len, spacers))
-            lengths.append((source[0], spacerLengths))
+            spacerLengths = sorted(list(map(len, spacers)))
+            lenGroups = len([k for k, v in itertools.groupby(spacerLengths)])
+            if lenGroups > bins:
+                bins = lenGroups
+            lengths.append(spacerLengths)
+        labels = [s[0] for s in self.ids]
+        plot.figure(figsize=(30, 20))
+        plot.hist(x=lengths, bins=bins, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True, histtype='bar', label=labels)
+        plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
+        plot.legend(prop={'size': 10})
+        plot.savefig('test.png', dpi=480, bbox_inches='tight', pad_inches=0)
+        plot.clf()
