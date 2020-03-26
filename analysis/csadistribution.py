@@ -1,8 +1,7 @@
 import itertools
+import numpy as np
 import matplotlib.pyplot as plot
 from matplotlib.ticker import PercentFormatter
-import numpy as np
-
 
 class DistCalc:
     cursor = None
@@ -10,13 +9,18 @@ class DistCalc:
     evidenceLevel = None
     ids = None
 
+    # Outputs
+    lengthDistributionB64 = None
+    spacerDistributionB64 = None
+    arrayDistributionB64 = None
+    arraySpacerDistributionB64 = None
+
     def __init__(self, cursor, evidenceLevel, sourceList):
         self.cursor = cursor
         self.sourceList = sourceList
         self.evidenceLevel = evidenceLevel
 
     """Create Lists of IDs for use in distribution calculation functions"""
-
     def setupIdLists(self):
         self.ids = []
         for source in self.sourceList:
@@ -49,6 +53,6 @@ class DistCalc:
         plot.figure(figsize=(30, 20))
         plot.hist(x=lengths, bins=bins, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True, histtype='bar', label=labels)
         plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
-        plot.legend(prop={'size': 10})
-        plot.savefig('test.png', dpi=480, bbox_inches='tight', pad_inches=0)
+        plot.legend(prop={'size': 20})
+        plot.savefig('test.png', dpi=320, bbox_inches='tight', pad_inches=0)
         plot.clf()
