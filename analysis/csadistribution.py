@@ -56,3 +56,12 @@ class DistCalc:
         plot.legend(prop={'size': 20})
         plot.savefig('test.png', dpi=320, bbox_inches='tight', pad_inches=0)
         plot.clf()
+
+    def generateSpacerHist(self):
+        pass
+
+    def generateArrayHist(self):
+        pass
+
+    def generateArraySpacerHist(self):
+        pass
