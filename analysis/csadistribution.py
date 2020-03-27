@@ -46,6 +46,11 @@ class DistCalc:
         plot.savefig(img, format="png", dpi=220, bbox_inches='tight', pad_inches=0)
         return base64.encodebytes(img.getvalue()).decode()
 
+    def setupAxis(self, min, max):
+        plot.xticks(ticks=range(min, max), labels=range(min, max))
+        plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
+        plot.legend(prop={'size': 20})
+
     def generateSpacerLengthHist(self):
         if self.ids is None:
             self.setupIdLists()
@@ -74,9 +79,7 @@ class DistCalc:
         plot.hist(x=lengths, bins=max-min, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True,
                   range=[min, max], histtype='bar', align='left',
                   label=labels)  # Render bar histogram for all datasets, weights being set to 1/n for percentile output
-        plot.xticks(ticks=range(min, max), labels=range(min,max))
-        plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
-        plot.legend(prop={'size': 20})
+        self.setupAxis(min, max)
         self.lengthDistributionB64 = self.generateFigurePngB64()
         plot.savefig('tmp_lengthdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
         plot.clf()
