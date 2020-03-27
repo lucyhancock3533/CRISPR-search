@@ -1,7 +1,14 @@
-import itertools
+import sys
+import base64
+
+# Use AGG backend to remove tkinter exceptions when running headless
+import matplotlib
+matplotlib.use("Agg")
+
 import numpy as np
 import matplotlib.pyplot as plot
 from matplotlib.ticker import PercentFormatter
+from io import BytesIO
 
 class DistCalc:
     cursor = None
@@ -21,6 +28,7 @@ class DistCalc:
         self.evidenceLevel = evidenceLevel
 
     """Create Lists of IDs for use in distribution calculation functions"""
+
     def setupIdLists(self):
         self.ids = []
         for source in self.sourceList:
@@ -33,11 +41,20 @@ class DistCalc:
                 crisprIds = crisprIds + [x[0] for x in self.cursor.fetchall()]
             self.ids.append((source, genomeIds, crisprIds))
 
+    def generateFigurePngB64(self):
+        img = BytesIO()
+        plot.savefig(img, format="png", dpi=220, bbox_inches='tight', pad_inches=0)
+        return base64.encodebytes(img.getvalue()).decode()
+
     def generateSpacerLengthHist(self):
-        if self.ids == None:
+        if self.ids is None:
             self.setupIdLists()
+
+        # Fetch database data
         lengths = []
-        bins = 0
+        labels = []
+        min = sys.maxsize
+        max = 0
         for source in self.ids:
             spacers = []
             for id in source[2]:
@@ -45,16 +62,23 @@ class DistCalc:
                 spacers = spacers + [x[0] for x in self.cursor.fetchall()]
             spacers = list(filter(lambda x: 'N' not in x, spacers))
             spacerLengths = sorted(list(map(len, spacers)))
-            lenGroups = len([k for k, v in itertools.groupby(spacerLengths)])
-            if lenGroups > bins:
-                bins = lenGroups
+            if spacerLengths[-1] > max:
+                max = spacerLengths[-1]
+            if spacerLengths[0] < min:
+                min = spacerLengths[0]
             lengths.append(spacerLengths)
-        labels = [s[0] for s in self.ids]
-        plot.figure(figsize=(30, 20))
-        plot.hist(x=lengths, bins=bins, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True, histtype='bar', label=labels)
+            labels.append(source[0])
+
+        # Generate histogram
+        plot.figure(figsize=(40, 15))  # Create 30x20 figure
+        plot.hist(x=lengths, bins=max-min, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True,
+                  range=[min, max], histtype='bar', align='left',
+                  label=labels)  # Render bar histogram for all datasets, weights being set to 1/n for percentile output
+        plot.xticks(ticks=range(min, max), labels=range(min,max))
         plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
         plot.legend(prop={'size': 20})
-        plot.savefig('test.png', dpi=320, bbox_inches='tight', pad_inches=0)
+        self.lengthDistributionB64 = self.generateFigurePngB64()
+        plot.savefig('tmp_lengthdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
         plot.clf()
 
     def generateSpacerHist(self):
