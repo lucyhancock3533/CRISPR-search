@@ -49,5 +49,6 @@ if __name__ == "__main__":
     if csaSettings.doDistCalc:
         print('Generating distributions... (This may take some time)')
         dist.generateSpacerLengthHist()
+        dist.generateArraySpacerHist()
 
     dbConnection.closeDatabase()
