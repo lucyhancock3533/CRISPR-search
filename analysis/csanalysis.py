@@ -51,5 +51,6 @@ if __name__ == "__main__":
         dist.generateSpacerLengthHist()
         dist.generateArraySpacerHist()
         dist.generateArrayHist()
+        dist.generateSpacerHist()
 
     dbConnection.closeDatabase()
