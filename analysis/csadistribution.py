@@ -95,7 +95,35 @@ class DistCalc:
         pass
 
     def generateArrayHist(self):
-        pass
+        if self.ids is None:
+            self.setupIdLists()
+
+        # Fetch data
+        arrayCounts = []
+        labels = []
+        minSize = sys.maxsize
+        maxSize = 0
+        for source in self.ids:
+            arrays = []
+            for id in source[1]:
+                self.cursor.execute('SELECT spacers FROM CRISPR WHERE genomeId = ? AND evidenceLevel >= ?;',
+                                    [id, self.evidenceLevel])
+                arrays.append(len(self.cursor.fetchall()))
+            arrays = sorted(arrays)
+            labels.append(source[0])
+            if arrays[-1] > maxSize:
+                maxSize = arrays[-1]
+            if arrays[0] < minSize:
+                minSize = arrays[0]
+            arrayCounts.append(arrays)
+
+         # Generate histogram
+        plot.figure(figsize=(40, 20))
+        self.plotHistogram(arrayCounts, minSize, maxSize, labels)
+        self.arrayDistributionB64 = self.generateFigurePngB64()
+        plot.savefig('tmp_arraydist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
+        self.cleanFigure()
+
 
     def generateArraySpacerHist(self):
         if self.ids is None:
