@@ -3,3 +3,4 @@ class CsaSettings:
     dbPath = ''
     outputPath = 'csaoutput.html'
     doStatCalc = True
+    doDistCalc = True
