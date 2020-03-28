@@ -46,10 +46,20 @@ class DistCalc:
         plot.savefig(img, format="png", dpi=220, bbox_inches='tight', pad_inches=0)
         return base64.encodebytes(img.getvalue()).decode()
 
-    def setupAxis(self, min, max):
-        plot.xticks(ticks=range(min, max), labels=range(min, max))
+    def plotHistogram(self, data, minSize, maxSize, labels, ticks=None):
+        plot.hist(x=data, bins=maxSize-minSize, weights=[np.ones(len(x)) / len(x) for x in data], density=True,
+                  range=[minSize, maxSize], histtype='bar', align='left',
+                  label=labels)  # Render bar histogram for all datasets, weights being set to 1/n for percentile output
+        if ticks is None:
+            ticks = list(range(minSize, maxSize))
+        plot.xticks(ticks=ticks, labels=ticks)
         plot.gca().yaxis.set_major_formatter(PercentFormatter(1))
         plot.legend(prop={'size': 20})
+
+    def cleanFigure(self):
+        plot.clf()
+        plot.cla()
+        plot.close()
 
     def generateSpacerLengthHist(self):
         if self.ids is None:
@@ -58,8 +68,8 @@ class DistCalc:
         # Fetch database data
         lengths = []
         labels = []
-        min = sys.maxsize
-        max = 0
+        minSize = sys.maxsize
+        maxSize = 0
         for source in self.ids:
             spacers = []
             for id in source[2]:
@@ -67,22 +77,19 @@ class DistCalc:
                 spacers = spacers + [x[0] for x in self.cursor.fetchall()]
             spacers = list(filter(lambda x: 'N' not in x, spacers))
             spacerLengths = sorted(list(map(len, spacers)))
-            if spacerLengths[-1] > max:
-                max = spacerLengths[-1]
-            if spacerLengths[0] < min:
-                min = spacerLengths[0]
+            if spacerLengths[-1] > maxSize:
+                maxSize = spacerLengths[-1]
+            if spacerLengths[0] < minSize:
+                minSize = spacerLengths[0]
             lengths.append(spacerLengths)
             labels.append(source[0])
 
         # Generate histogram
-        plot.figure(figsize=(40, 15))  # Create 30x20 figure
-        plot.hist(x=lengths, bins=max-min, weights=[np.ones(len(x)) / len(x) for x in lengths], density=True,
-                  range=[min, max], histtype='bar', align='left',
-                  label=labels)  # Render bar histogram for all datasets, weights being set to 1/n for percentile output
-        self.setupAxis(min, max)
+        plot.figure(figsize=(40, 15))
+        self.plotHistogram(lengths, minSize, maxSize, labels)
         self.lengthDistributionB64 = self.generateFigurePngB64()
         plot.savefig('tmp_lengthdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
-        plot.clf()
+        self.cleanFigure()
 
     def generateSpacerHist(self):
         pass
@@ -91,4 +98,28 @@ class DistCalc:
         pass
 
     def generateArraySpacerHist(self):
-        pass
+        if self.ids is None:
+            self.setupIdLists()
+
+        # Fetch data
+        spacersPerArray = []
+        labels = []
+        maxSize = 0
+        for source in self.ids:
+            spacerCount = []
+            for id in source[1]:
+                self.cursor.execute('SELECT spacers FROM CRISPR WHERE genomeId = ? AND evidenceLevel >= ?;',
+                                    [id, self.evidenceLevel])
+                spacerCount += [x[0] for x in self.cursor.fetchall()]
+            spacerCount = sorted(spacerCount)
+            labels.append(source[0])
+            if spacerCount[-1] > maxSize:
+                maxSize = spacerCount[-1]
+            spacersPerArray.append(spacerCount)
+
+        # Generate histogram
+        plot.figure(figsize=(50, 15))
+        self.plotHistogram(spacersPerArray, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
+        self.arraySpacerDistributionB64 = self.generateFigurePngB64()
+        plot.savefig('tmp_arrayspacerdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
+        self.cleanFigure()
