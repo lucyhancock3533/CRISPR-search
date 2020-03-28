@@ -23,7 +23,9 @@ class TestCsaDistribution(unittest.TestCase):
         d = DistCalc(self.db.getCursor(), 3, ['RUG-900'])
         d.generateSpacerHist()
         self.assertIsNotNone(d.spacerDistributionB64)
+        self.assertIsNotNone(d.spacerDistributionNoZeroB64)
         self.assertNotEqual(len(d.spacerDistributionB64), 0)
+        self.assertNotEqual(len(d.spacerDistributionNoZeroB64), 0)
 
     def testArrayDist(self):
         Path("./test_dbs").mkdir(parents=True, exist_ok=True)

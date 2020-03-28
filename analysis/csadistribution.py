@@ -19,6 +19,7 @@ class DistCalc:
     # Outputs
     lengthDistributionB64 = None
     spacerDistributionB64 = None
+    spacerDistributionNoZeroB64 = None
     arrayDistributionB64 = None
     arraySpacerDistributionB64 = None
 
@@ -92,7 +93,46 @@ class DistCalc:
         self.cleanFigure()
 
     def generateSpacerHist(self):
-        pass
+        if self.ids is None:
+            self.setupIdLists()
+
+        # Fetch data
+        spacersPerGenome = []
+        spacerNoZero = []
+        labels = []
+        maxSize = 0
+        for source in self.ids:
+            genomes = []
+            for id in source[1]:
+                self.cursor.execute('SELECT id FROM CRISPR WHERE genomeId = ? AND evidenceLevel >= ?;',
+                                    [id, self.evidenceLevel])
+                genomeCrispr = [x[0] for x in self.cursor.fetchall()]
+                count = 0
+                for cId in genomeCrispr:
+                    self.cursor.execute('SELECT id FROM Regions WHERE crisprId = ? AND type = ?;', [cId, 'Spacer'])
+                    count = len(self.cursor.fetchall())
+                genomes.append(count)
+            genomes = sorted(genomes)
+            labels.append(source[0])
+            if genomes[-1] > maxSize:
+                maxSize = genomes[-1]
+            spacersPerGenome.append(genomes)
+            spacerNoZero.append(list(filter(lambda x: x != 0, genomes)))
+
+            # Generate histogram
+            plot.figure(figsize=(50, 30))
+            self.plotHistogram(spacersPerGenome, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
+            self.spacerDistributionB64 = self.generateFigurePngB64()
+            plot.savefig('tmp_spacerdist.png', dpi=220, bbox_inches='tight',
+                         pad_inches=0)  # TODO: Remove after HTML gen
+            self.cleanFigure()
+
+            plot.figure(figsize=(50, 15))
+            self.plotHistogram(spacerNoZero, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
+            self.spacerDistributionNoZeroB64 = self.generateFigurePngB64()
+            plot.savefig('tmp_spacerdistnozero.png', dpi=220, bbox_inches='tight',
+                         pad_inches=0)  # TODO: Remove after HTML gen
+            self.cleanFigure()
 
     def generateArrayHist(self):
         if self.ids is None:
@@ -106,7 +146,7 @@ class DistCalc:
         for source in self.ids:
             arrays = []
             for id in source[1]:
-                self.cursor.execute('SELECT spacers FROM CRISPR WHERE genomeId = ? AND evidenceLevel >= ?;',
+                self.cursor.execute('SELECT id FROM CRISPR WHERE genomeId = ? AND evidenceLevel >= ?;',
                                     [id, self.evidenceLevel])
                 arrays.append(len(self.cursor.fetchall()))
             arrays = sorted(arrays)
