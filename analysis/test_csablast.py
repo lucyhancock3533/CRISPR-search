@@ -12,7 +12,9 @@ class TestFastaGen(unittest.TestCase):
         f = FastaDbGen(self.db.getCursor(), 3)
         f.generateFastaDb()
         self.assertIsNotNone(f.fastaDb)
-        # Assert expected database
+        self.assertEqual(('AATTCATGATTTTAGAAGAATTAAACTAGC', 'RUG017', 'RUG-900'), f.fastaDb['c36be8fc-18fb-4ea8-b91d-4092a495819d-36'])
+        self.assertEqual(('TTTGAGGATAGTGAAGTATTGCAAAAGAAAATAGAT', 'hRUG857', 'RUG-900'), f.fastaDb['1e1016e2-9cd4-4245-a064-a41fbd656b89-37'])
+        self.assertEqual(('AGCGATTTCATACATATTCACCCCCGAATA', 'RUG081', 'RUG-900'), f.fastaDb['8f02a85f-1261-4c1e-8e1c-ed9025cac6f9-16'])
 
     def testFastaGen(self):
         self.db.changeConnDb('test_dbs/' + str(uuid.uuid4()) + '.db')
@@ -21,4 +23,4 @@ class TestFastaGen(unittest.TestCase):
         f.generateFasta()
         self.assertIsNotNone(f.fastaDb)
         self.assertIsNotNone(f.fasta)
-        self.assertNotEquals(0, len(f.fasta))
+        self.assertNotEqual(0, len(f.fasta))
