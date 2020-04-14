@@ -23,4 +23,4 @@ class TestFastaGen(unittest.TestCase):
         f.generateFasta()
         self.assertIsNotNone(f.fastaDb)
         self.assertIsNotNone(f.fasta)
-        self.assertNotEqual(0, len(f.fasta))
+        self.assertEqual(544624, len(f.fasta))
