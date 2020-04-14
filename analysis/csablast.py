@@ -29,10 +29,17 @@ class FastaDbGen:
                                     [array[0], 'Spacer'])
                 spacers = [x[0] for x in self.cursor.fetchall()]
                 for i in range(0, len(spacers)):
-                    self.fastaDb[array[0] + '-' + str(i)] = (spacers[i], name, source)
+                    if 'N' not in spacers[i]:
+                        self.fastaDb[array[0] + '-' + str(i)] = (spacers[i], name, source)
 
     def generateFasta(self):
-        pass
+        if self.fastaDb == None:
+            self.generateFastaDb()
+        self.fasta = ''
+
+        for k in self.fastaDb:
+            self.fasta += '>{}\n'.format(k)
+            self.fasta += '{}\n'.format(self.fastaDb[k][0])
 
     def exportFastaFile(self, filePath):
         pass
