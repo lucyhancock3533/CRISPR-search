@@ -36,3 +36,6 @@ class TestFastaGen(unittest.TestCase):
         file.close()
         self.assertEqual(544624, len(fileData))
         self.assertEqual(f.fasta, fileData)
+
+class TestBLAST(unittest.TestCase):
+    db = DbConnection()

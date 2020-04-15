@@ -48,3 +48,6 @@ class FastaDbGen:
         file = open(filePath, "w")
         file.write(self.fasta)
         file.close()
+
+class BLAST:
+    pass
