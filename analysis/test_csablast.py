@@ -24,3 +24,15 @@ class TestFastaGen(unittest.TestCase):
         self.assertIsNotNone(f.fastaDb)
         self.assertIsNotNone(f.fasta)
         self.assertEqual(544624, len(f.fasta))
+
+    def testFastaWrite(self):
+        self.db.changeConnDb('test_dbs/' + str(uuid.uuid4()) + '.db')
+        self.db.loadDatabase('test_dbs/rug900.sdb')
+        f = FastaDbGen(self.db.getCursor(), 3)
+        fileName = 'test_dbs/' + str(uuid.uuid4()) + '.db'
+        f.exportFastaFile(fileName)
+        file = open(fileName, "r")
+        fileData = file.read()
+        file.close()
+        self.assertEqual(544624, len(fileData))
+        self.assertEqual(f.fasta, fileData)
