@@ -42,4 +42,9 @@ class FastaDbGen:
             self.fasta += '{}\n'.format(self.fastaDb[k][0])
 
     def exportFastaFile(self, filePath):
-        pass
+        if self.fasta == None:
+            self.generateFasta()
+
+        file = open(filePath, "w")
+        file.write(self.fasta)
+        file.close()
