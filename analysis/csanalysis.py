@@ -3,6 +3,7 @@ from csastatcalc import StatCalc
 from csadb import DbConnection
 from csadistribution import DistCalc
 from csahtmlgen import CsaHTMLGenerator
+from jinja2 import FileSystemLoader
 import sys
 
 csaSettings = CsaSettings()
@@ -55,5 +56,11 @@ if __name__ == "__main__":
         dist.generateArrayHist()
         dist.generateSpacerHist()
         htmlOutput.addDist(dist)
+
+    htmlLoader = FileSystemLoader('.')
+    outputHtml = htmlOutput.generateHTML(htmlLoader)
+    file = open(csaSettings.outputPath, "w")
+    file.write(outputHtml)
+    file.close()
 
     dbConnection.closeDatabase()
