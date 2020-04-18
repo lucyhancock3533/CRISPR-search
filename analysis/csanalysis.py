@@ -2,6 +2,7 @@ from csasettings import CsaSettings
 from csastatcalc import StatCalc
 from csadb import DbConnection
 from csadistribution import DistCalc
+from csahtmlgen import CsaHTMLGenerator
 import sys
 
 csaSettings = CsaSettings()
@@ -37,20 +38,22 @@ if __name__ == "__main__":
     sourceList = list(sourceList)
     sourceList = [source[0] for source in sourceList]
 
-    stats = StatCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
+    htmlOutput = CsaHTMLGenerator()
+
     if csaSettings.doStatCalc:
+        stats = StatCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
         print('Generating statistics... (This may take some time)')
         stats.genBasicStats()
         stats.genPercStats()
-        print(stats.sourceCounts)
-        print(stats.sourcePercs)
+        htmlOutput.addBasic(stats)
 
-    dist = DistCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
     if csaSettings.doDistCalc:
+        dist = DistCalc(dbConnection.getCursor(), csaSettings.evidenceLevel, sourceList)
         print('Generating distributions... (This may take some time)')
         dist.generateSpacerLengthHist()
         dist.generateArraySpacerHist()
         dist.generateArrayHist()
         dist.generateSpacerHist()
+        htmlOutput.addDist(dist)
 
     dbConnection.closeDatabase()
