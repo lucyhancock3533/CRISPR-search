@@ -53,4 +53,4 @@ class StatCalc:
                 wCrispr += 1
         wcP = (wCrispr / (woCrispr + wCrispr)) * 100
         wocP = (woCrispr / (woCrispr + wCrispr)) * 100
-        return source, wcP, wocP
+        return source, round(wcP, 2), round(wocP, 2)
