@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>CRISPR-Search Analysis tool output</title>
+</head>
+<body>
+    {% if doGenerateBasic %}
+    <h1>Basic stats</h1>
+    <h2>CRISPR arrays present</h2>
+    {% for count in crisprCounts %}
+    <span>{{ count[0] }} | Total found: {{ count[1] }} | Total of sufficient evidence: {{ count[2] }}</span><br/>
+    {% endfor %}
+    <h2>Percentage of assemblies containing CRISPR arrays</h2>
+    {% for perc in crisprPercs %}
+    <span>{{ perc[0] }} | Percent contains: {{ perc[1] }} | Percent does not contain: {{ perc[2] }}</span><br/>
+    {% endfor %}
+    {% endif %}
+    {% if doGenerateDist %}
+    <h1>CRISPR Distributions</h1>
+    <h2>CRISPR Array distribution</h2>
+    <img style="max-width: 100%" src="data:image/png;base64,{{ arrayPng }}" />
+    <h2>CRISPR Spacer distribution</h2>
+    <img style="max-width: 100%" src="data:image/png;base64,{{ spacerPng }}" />
+    <h2>CRISPR Spacer distribution (Zeros removed)</h2>
+    <img style="max-width: 100%" src="data:image/png;base64,{{ spacerNzPng }}" />
+    <h2>CRISPR Spacer distribution among arrays</h2>
+    <img style="max-width: 100%" src="data:image/png;base64,{{ arraySpacerPng }}" />
+    <h2>CRISPR Spacer length distribution</h2>
+    <img style="max-width: 100%" src="data:image/png;base64,{{ lengthPng }}" />
+    {% endif %}
+</body>
+</html>
