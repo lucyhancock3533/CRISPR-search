@@ -88,7 +88,6 @@ class DistCalc:
         plot.figure(figsize=(40, 15))
         self.plotHistogram(lengths, minSize, maxSize, labels)
         self.lengthDistributionB64 = self.generateFigurePngB64()
-        plot.savefig('tmp_lengthdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
         self.cleanFigure()
 
     def generateSpacerHist(self):
@@ -122,15 +121,11 @@ class DistCalc:
             plot.figure(figsize=(50, 30))
             self.plotHistogram(spacersPerGenome, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
             self.spacerDistributionB64 = self.generateFigurePngB64()
-            plot.savefig('tmp_spacerdist.png', dpi=220, bbox_inches='tight',
-                         pad_inches=0)  # TODO: Remove after HTML gen
             self.cleanFigure()
 
             plot.figure(figsize=(50, 15))
             self.plotHistogram(spacerNoZero, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
             self.spacerDistributionNoZeroB64 = self.generateFigurePngB64()
-            plot.savefig('tmp_spacerdistnozero.png', dpi=220, bbox_inches='tight',
-                         pad_inches=0)  # TODO: Remove after HTML gen
             self.cleanFigure()
 
     def generateArrayHist(self):
@@ -160,7 +155,6 @@ class DistCalc:
         plot.figure(figsize=(40, 20))
         self.plotHistogram(arrayCounts, minSize, maxSize, labels)
         self.arrayDistributionB64 = self.generateFigurePngB64()
-        plot.savefig('tmp_arraydist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
         self.cleanFigure()
 
 
@@ -188,5 +182,4 @@ class DistCalc:
         plot.figure(figsize=(50, 15))
         self.plotHistogram(spacersPerArray, 0, maxSize, labels, np.arange(0, maxSize, 10).tolist())
         self.arraySpacerDistributionB64 = self.generateFigurePngB64()
-        plot.savefig('tmp_arrayspacerdist.png', dpi=220, bbox_inches='tight', pad_inches=0)  # TODO: Remove after HTML gen
         self.cleanFigure()

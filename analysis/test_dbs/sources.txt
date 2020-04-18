@@ -1,0 +1,3 @@
+rug900.sdb:
+Watson, Mick. (2018). Assembly of 913 microbial genomes from metagenomic sequencing of the cow rumen, [dataset]. The Roslin Institute and Royal (Dick) School of Veterinary Studies. University of Edinburgh. https://doi.org/10.7488/ds/2296.
+* Generated using CRISPR-search location and CRISPRCasFinder
