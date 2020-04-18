@@ -6,6 +6,7 @@ from csastatcalc import StatCalc
 from csadistribution import DistCalc
 from csahtmlgen import CsaHTMLGenerator
 from pathlib import Path
+from jinja2 import DictLoader
 
 class TestCsaHTMLGeneration(unittest.TestCase):
     db = DbConnection()
@@ -63,5 +64,9 @@ class TestCsaHTMLGeneration(unittest.TestCase):
         s = CsaSettings()
         self.assertRaises(TypeError, html.addDist, s)
 
-    def testHTMLGen(self):
-        pass
+    def testBlankHTMLGen(self):
+        html = CsaHTMLGenerator()
+        template = '<html><head><title>Unittest</title></head><body><p>Unittest</p></body></html>'
+        htmlLoader = DictLoader({'csanalysis_output.html': template})
+        self.assertEqual(len(template), len(html.generateHTML(htmlLoader)))
+        self.assertEqual(template, html.generateHTML(htmlLoader))

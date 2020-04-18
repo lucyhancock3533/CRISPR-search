@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 matplotlib = "*"
 numpy = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.8"
