@@ -1,6 +1,8 @@
 class CsaSettings:
     evidenceLevel = 3
-    dbPath = ''
+    dbPath = None
+    blastPath = None
     outputPath = 'csaoutput.html'
     doStatCalc = True
     doDistCalc = True
+    doSimilar = True

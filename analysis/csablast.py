@@ -1,3 +1,5 @@
+import subprocess
+
 class FastaDbGen:
     cursor = None
     evidenceLevel = None
@@ -50,4 +52,17 @@ class FastaDbGen:
         file.close()
 
 class BLAST:
-    pass
+    blastPath = None
+
+    def __init__(self, blastPath):
+        self.blastPath = blastPath
+
+    def generateBlastDb(self, fastaFile):
+        dbProcess = subprocess.Popen([self.blastPath + '/bin/makeblastdb', '-dbtype', 'nucl', '-in', fastaFile])
+        dbProcess.wait()
+        return fastaFile
+
+    def runBlastShortQuery(self, blastDb, queryFile):
+        blastProcess = subprocess.check_output([self.blastPath + '/bin/blastn', '-task', 'blastn-short', '-db',
+                                         blastDb, '-query', queryFile, '-outfmt', '6 sseqid bitscore qseq sseq']).decode()
+        return blastProcess
