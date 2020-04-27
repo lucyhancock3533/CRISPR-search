@@ -72,13 +72,9 @@ if __name__ == "__main__":
         htmlOutput.addDist(dist)
 
     if csaSettings.doSimilar:
-        fasta = FastaDbGen(dbConnection.getCursor(), csaSettings.evidenceLevel)
-        fasta.exportFastaFile('../test.fa')
-        b = BLAST(csaSettings.blastPath)
-        b.generateBlastDb('../test.fa')
-        print(b.runBlastShortQuery('../test.fa', './run.fa'))
+        pass
 
-    htmlLoader = FileSystemLoader('.')
+    htmlLoader = FileSystemLoader(os.path.dirname(os.path.realpath(__file__)))
     outputHtml = htmlOutput.generateHTML(htmlLoader)
     file = open(csaSettings.outputPath, "w")
     file.write(outputHtml)

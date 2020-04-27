@@ -1,4 +1,5 @@
 import subprocess
+import csv
 
 class FastaDbGen:
     cursor = None
@@ -65,4 +66,7 @@ class BLAST:
     def runBlastShortQuery(self, blastDb, queryFile):
         blastProcess = subprocess.check_output([self.blastPath + '/bin/blastn', '-task', 'blastn-short', '-db',
                                          blastDb, '-query', queryFile, '-outfmt', '6 sseqid bitscore qseq sseq']).decode()
-        return blastProcess
+        return self.parseBlastShortQuery(blastProcess)
+
+    def parseBlastShortQuery(self, result):
+        return [line for line in csv.reader(result.splitlines(), dialect='excel-tab')]
