@@ -6,7 +6,8 @@ from csahtmlgen import CsaHTMLGenerator
 from jinja2 import FileSystemLoader
 import sys
 import os.path
-from csablast import FastaDbGen, BLAST
+from csasimilar import SimilarityCalc
+from pathlib import Path
 
 csaSettings = CsaSettings()
 
@@ -16,6 +17,11 @@ def setupParameters():
             csaSettings.dbPath = sys.argv[i+1]
         elif sys.argv[i] == '--out' and (len(sys.argv) - (i + 1)) >= 1:
             csaSettings.outputPath = sys.argv[i+1]
+        elif sys.argv[i] == '--blast-db-path' and (len(sys.argv) - (i + 1)) >= 1:
+            csaSettings.blastDbPath = sys.argv[i+1]
+            Path(csaSettings.blastDbPath).mkdir(parents=True, exist_ok=True)
+        elif sys.argv[i] == '--similarity-cutoff' and (len(sys.argv) - (i + 1)) >= 1:
+            csaSettings.similarityPercCutoff = int(sys.argv[i+1])
         elif sys.argv[i] == '--blast-path' and (len(sys.argv) - (i + 1)) >= 1:
             csaSettings.blastPath = sys.argv[i+1]
             if not os.path.exists(csaSettings.blastPath + '/bin/blastn') \
@@ -72,8 +78,13 @@ if __name__ == "__main__":
         htmlOutput.addDist(dist)
 
     if csaSettings.doSimilar:
-        pass
+        print('Generating similarities... (This may take a very long time)')
+        similar = SimilarityCalc(dbConnection.getCursor(), csaSettings.evidenceLevel,
+                                 csaSettings.similarityPercCutoff, csaSettings.blastDbPath, csaSettings.blastPath)
+        similar.doSimilarityCalc()
+        htmlOutput.addSimilar(similar)
 
+    print('Generating output HTML...')
     htmlLoader = FileSystemLoader(os.path.dirname(os.path.realpath(__file__)))
     outputHtml = htmlOutput.generateHTML(htmlLoader)
     file = open(csaSettings.outputPath, "w")

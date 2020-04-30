@@ -6,3 +6,5 @@ class CsaSettings:
     doStatCalc = True
     doDistCalc = True
     doSimilar = True
+    blastDbPath = '.'
+    similarityPercCutoff = 85
