@@ -56,4 +56,4 @@ class SimilarityCalc:
         self.similarities = genomeResults
 
     def replaceIdForName(self, ipt):
-        return self.fastaDb.fastaDb[ipt[0]][1] + ' - ' + self.fastaDb.fastaDb[ipt[0]][2], ipt[1], ipt[2], ipt[3]
+        return self.fastaDb.fastaDb[ipt[0]][1] + ' - ' + self.fastaDb.fastaDb[ipt[0]][2] + ' - ' + ipt[0], ipt[1], ipt[2], ipt[3]
