@@ -59,8 +59,7 @@ class BLAST:
         self.blastPath = blastPath
 
     def generateBlastDb(self, fastaFile):
-        dbProcess = subprocess.Popen([self.blastPath + '/bin/makeblastdb', '-dbtype', 'nucl', '-in', fastaFile])
-        dbProcess.wait()
+        subprocess.check_output([self.blastPath + '/bin/makeblastdb', '-dbtype', 'nucl', '-in', fastaFile])
         return fastaFile
 
     def runBlastShortQuery(self, blastDb, queryFile):
