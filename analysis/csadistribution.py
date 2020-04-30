@@ -29,7 +29,6 @@ class DistCalc:
         self.evidenceLevel = evidenceLevel
 
     """Create Lists of IDs for use in distribution calculation functions"""
-
     def setupIdLists(self):
         self.ids = []
         for source in self.sourceList:

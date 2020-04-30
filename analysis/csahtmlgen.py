@@ -1,13 +1,16 @@
 from csastatcalc import StatCalc
 from csadistribution import DistCalc
+from csasimilar import SimilarityCalc
 from jinja2 import Environment, select_autoescape
 
 class CsaHTMLGenerator:
     doGenerateBasic = False
     doGenerateDist = False
+    doGenerateSimilar = False
 
     basicStatCalc = None
     distCalc = None
+    similarCalc = None
 
     def addBasic(self, statCalc):
         if isinstance(statCalc, StatCalc):
@@ -23,6 +26,13 @@ class CsaHTMLGenerator:
         else:
             raise TypeError('Provided object is not of type DistCalc')
 
+    def addSimilar(self, similarCalc):
+        if isinstance(similarCalc, SimilarityCalc):
+            self.doGenerateSimilar = True
+            self.similarCalc = similarCalc
+        else:
+            raise TypeError('Provided object is not of type SimilarityCalc')
+
     def generateHTML(self, templateLoader):
         paramDict = self.assembleParamDict()
         jinjaEnv = Environment(loader=templateLoader, autoescape=select_autoescape(['html', 'htm']))
@@ -30,9 +40,9 @@ class CsaHTMLGenerator:
         return template.render(paramDict)
 
     def assembleParamDict(self):
-        paramDict = {}
-        paramDict['doGenerateBasic'] = self.doGenerateBasic
-        paramDict['doGenerateDist'] = self.doGenerateDist
+        paramDict = {'doGenerateBasic': self.doGenerateBasic,
+                     'doGenerateDist': self.doGenerateDist,
+                     'doGenerateSimilar': self.doGenerateSimilar}
         if self.doGenerateBasic:
             paramDict['crisprCounts'] = self.basicStatCalc.sourceCounts
             paramDict['crisprPercs'] = self.basicStatCalc.sourcePercs
@@ -42,4 +52,6 @@ class CsaHTMLGenerator:
             paramDict['spacerNzPng'] = self.distCalc.spacerDistributionNoZeroB64
             paramDict['arrayPng'] = self.distCalc.arrayDistributionB64
             paramDict['arraySpacerPng'] = self.distCalc.arraySpacerDistributionB64
+        if self.doGenerateSimilar:
+            paramDict['similarities'] = self.similarCalc.similarities
         return paramDict
