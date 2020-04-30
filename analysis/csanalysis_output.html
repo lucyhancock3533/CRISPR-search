@@ -28,5 +28,22 @@
     <h2>CRISPR Spacer length distribution</h2>
     <img style="max-width: 100%" src="data:image/png;base64,{{ lengthPng }}" />
     {% endif %}
+    {% if doGenerateSimilar %}
+    <h1>Spacer similarities</h1>
+    {% for genome in similarities %}
+    <h3>{{ genome[0] }}</h3>
+    <ul>
+        {% for match in genome[1] %}
+        <li>
+            {{ match[0] }}
+            <ul>
+                <li style="font-family:monospace">{{ match[2] }} - Query</li>
+                <li style="font-family:monospace">{{ match[3] }} - Match</li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endif %}
 </body>
 </html>
