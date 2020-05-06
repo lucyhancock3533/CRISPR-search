@@ -8,3 +8,5 @@ class CsaSettings:
     doSimilar = True
     blastDbPath = '.'
     similarityPercCutoff = 85
+    externalDbs = []
+    doExternal = False

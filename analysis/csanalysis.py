@@ -36,6 +36,8 @@ def setupParameters():
             csaSettings.doDistCalc = False
         elif sys.argv[i] == '--skip-similar':
             csaSettings.doSimilar = False
+        elif sys.argv[i] == '--external-fasta-db' and (len(sys.argv) - (i + 1)) >= 1:
+            csaSettings.externalDbs.append(sys.argv[i+1])
 
     if csaSettings.dbPath is None:
         print('No database was specified, run %s --help for more information.' % sys.argv[0], file=sys.stderr)
@@ -44,6 +46,7 @@ def setupParameters():
     if csaSettings.blastPath is None:
         print('BLAST path not specified, modules requiring BLAST disabled.', file=sys.stderr)
         csaSettings.doSimilar = False
+        csaSettings.doExternal = False
 
 if __name__ == "__main__":
     print('CRISPR-search Analysis')
@@ -83,6 +86,14 @@ if __name__ == "__main__":
                                  csaSettings.similarityPercCutoff, csaSettings.blastDbPath, csaSettings.blastPath)
         similar.doSimilarityCalc()
         htmlOutput.addSimilar(similar)
+
+    if csaSettings.doExternal:
+        print('Generating external searches... (This may take a very long time)')
+        for x in csaSettings.externalDbs:
+            similar = SimilarityCalc(dbConnection.getCursor(), csaSettings.evidenceLevel,
+                                     csaSettings.similarityPercCutoff, x, csaSettings.blastPath, generateDb=False)
+            similar.doSimilarityCalc()
+            htmlOutput.addExternal(similar, externalName=x)
 
     print('Generating output HTML...')
     htmlLoader = FileSystemLoader(os.path.dirname(os.path.realpath(__file__)))

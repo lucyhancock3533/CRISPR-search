@@ -7,10 +7,12 @@ class CsaHTMLGenerator:
     doGenerateBasic = False
     doGenerateDist = False
     doGenerateSimilar = False
+    doGenerateExternal = False
 
     basicStatCalc = None
     distCalc = None
     similarCalc = None
+    externalCalc = []
 
     def addBasic(self, statCalc):
         if isinstance(statCalc, StatCalc):
@@ -33,6 +35,13 @@ class CsaHTMLGenerator:
         else:
             raise TypeError('Provided object is not of type SimilarityCalc')
 
+    def addExternal(self, externalCalc, externalName='Database name unknown'):
+        if isinstance(externalCalc, SimilarityCalc):
+            self.doGenerateExternal = True
+            self.externalCalc.append((externalName, externalCalc))
+        else:
+            raise TypeError('Provided object is not of type SimilarityCalc')
+
     def generateHTML(self, templateLoader):
         paramDict = self.assembleParamDict()
         jinjaEnv = Environment(loader=templateLoader, autoescape=select_autoescape(['html', 'htm']))
@@ -42,7 +51,8 @@ class CsaHTMLGenerator:
     def assembleParamDict(self):
         paramDict = {'doGenerateBasic': self.doGenerateBasic,
                      'doGenerateDist': self.doGenerateDist,
-                     'doGenerateSimilar': self.doGenerateSimilar}
+                     'doGenerateSimilar': self.doGenerateSimilar,
+                     'doGenerateExternal': self.doGenerateExternal}
         if self.doGenerateBasic:
             paramDict['crisprCounts'] = self.basicStatCalc.sourceCounts
             paramDict['crisprPercs'] = self.basicStatCalc.sourcePercs
@@ -54,4 +64,6 @@ class CsaHTMLGenerator:
             paramDict['arraySpacerPng'] = self.distCalc.arraySpacerDistributionB64
         if self.doGenerateSimilar:
             paramDict['similarities'] = self.similarCalc.similarities
+        if self.doGenerateExternal:
+            paramDict['externals'] = [(x[0], x[1].similarities) for x in self.externalCalc]
         return paramDict

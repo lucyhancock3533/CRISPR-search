@@ -45,5 +45,24 @@
     </ul>
     {% endfor %}
     {% endif %}
+    {% if deGenerateExternal %}
+    <h1>External searches</h1>
+    {% for external in externals %}
+    <h2>{{ external[0] }}</h2>
+    {% for genome in external[1] %}
+    <h3>{{ genome[0] }}</h3>
+    <ul>
+        {% for match in genome[1] %}
+        <li>
+            {{ match[0] }}
+            <ul>
+                <li style="font-family:monospace">{{ match[2] }} - Query</li>
+                <li style="font-family:monospace">{{ match[3] }} - Match</li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+    {% endif %}
 </body>
 </html>
