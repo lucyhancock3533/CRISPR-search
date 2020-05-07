@@ -47,12 +47,18 @@ class SimilarityCalc:
                         os.remove(fn)
 
                         if len(blastRes) > 0:
-                            # Calculate relevant matches
-                            minBit = float(blastRes[0][1]) * (self.similarityPercCutoff/100)
-                            # add matches to results
-                            for i in range(1, len(blastRes)):
-                                if float(blastRes[i][1]) >= minBit:
-                                    results.append(blastRes[i])
+                            if self.fastaDb is not None:
+                                # Calculate relevant matches
+                                minBit = float(blastRes[0][1]) * (self.similarityPercCutoff / 100)
+                                # add matches to results
+                                for i in range(1, len(blastRes)):
+                                    if float(blastRes[i][1]) >= minBit:
+                                        results.append(blastRes[i])
+                            else:
+                                for i in range(0, len(blastRes)):
+                                    if float(blastRes[i][1]) >= 20: # Somewhat arbitrary bitscore cutoff, based off of results seen from internal matching
+                                        results.append(blastRes[i])
+
             if len(results) > 0 and self.fastaDb is not None:
                 genomeResults.append((genome[1] + ' - ' + genome[2], [self.replaceIdForNameFastaDb(x) for x in results]))
             elif len(results) > 0 and self.fastaDb is None:
