@@ -1,3 +1,4 @@
+"""CRISPR search analysis settings"""
 class CsaSettings:
     evidenceLevel = 3
     dbPath = None

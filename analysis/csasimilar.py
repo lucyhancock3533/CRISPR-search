@@ -56,13 +56,13 @@ class SimilarityCalc:
                                         results.append(blastRes[i])
                             else:
                                 for i in range(0, len(blastRes)):
-                                    if float(blastRes[i][1]) >= 20: # Somewhat arbitrary bitscore cutoff, based off of results seen from internal matching
+                                    if float(blastRes[i][1]) >= 45: # Somewhat arbitrary bitscore cutoff, based off of results seen from internal matching
                                         results.append(blastRes[i])
 
             if len(results) > 0 and self.fastaDb is not None:
                 genomeResults.append((genome[1] + ' - ' + genome[2], [self.replaceIdForNameFastaDb(x) for x in results]))
             elif len(results) > 0 and self.fastaDb is None:
-                genomeResults.append((genome[1] + ' - ' + genome[2]))
+                genomeResults.append((genome[1] + ' - ' + genome[2], [self.replaceId(x) for x in results]))
         self.similarities = genomeResults
 
     def replaceIdForNameFastaDb(self, ipt):
