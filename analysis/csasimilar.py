@@ -16,10 +16,10 @@ class SimilarityCalc:
         fileName = ''
         if generateDb:
             self.fastaDb = FastaDbGen(cursor, evidenceLevel)
-            self.cursor = cursor
-            self.evidenceLevel = evidenceLevel
             fileName = '/' + str(uuid.uuid4()) + '.fa'
             self.fastaDb.exportFastaFile(dbPath + fileName)
+        self.cursor = cursor
+        self.evidenceLevel = evidenceLevel
         self.blastIns = BLAST(blastPath)
         self.blastIns.generateBlastDb(dbPath + fileName)
         self.similarityPercCutoff = similarityPercCutoff
