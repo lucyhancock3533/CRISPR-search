@@ -37,6 +37,7 @@ def setupParameters():
         elif sys.argv[i] == '--skip-similar':
             csaSettings.doSimilar = False
         elif sys.argv[i] == '--external-fasta-db' and (len(sys.argv) - (i + 1)) >= 1:
+            csaSettings.doExternal = True
             csaSettings.externalDbs.append(sys.argv[i+1])
 
     if csaSettings.dbPath is None:
