@@ -36,5 +36,3 @@ pipenv run python -m unittest discover
 
 To run tool run:
 pipenv run python csanalysis.py --db <path to db> --blast-path <path to blast>
-
-rug900.db has been included to run the tool with.
