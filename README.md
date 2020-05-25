@@ -1,6 +1,6 @@
 # CRISPR-search
 
-Location tool:
+## Location tool:
 
 Tested on Ubuntu 18.04 LTS
 
@@ -25,7 +25,7 @@ cslocation --help
 
 
 
-Analysis tool:
+## Analysis tool:
 Requires python 3.8 and pipenv, which can be installed from pip, BLAST is optionally required to run similarities.
 
 To install dependencies run:
