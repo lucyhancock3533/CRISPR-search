@@ -10,6 +10,7 @@ GCC8+, boost 1.65+, zlib, sqlite3, google test
 Once all the libraries above are installed cd into the location directory and run:
 
 `cmake .`
+
 `make`
 
 To run tests from the same directory run:
