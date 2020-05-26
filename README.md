@@ -1,5 +1,7 @@
 # CRISPR-search
 
+CRISPR-search is a tool designed to search for CRISPR in bulk using CRISPRCasFinder and builing a database of CRISPR arrays. There is then an analysis tool to analyse and search for key features involving the CRISPR arrays.
+
 ## Location tool:
 
 Tested on Ubuntu 18.04 LTS
